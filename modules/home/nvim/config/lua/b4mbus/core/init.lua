@@ -1,0 +1,5 @@
+b4.xpnequire('b4mbus.core.variables')
+b4.xpnequire('b4mbus.core.options')
+b4.xpnequire('b4mbus.core.keybinds')
+b4.xpnequire('b4mbus.core.autocmds')
+b4.xpnequire('b4mbus.core.commands')

@@ -1,0 +1,138 @@
+{
+  "nodes": {
+    "flake-utils": {
+      "locked": {
+        "lastModified": 1652776076,
+        "narHash": "sha256-gzTw/v1vj4dOVbpBSJX4J0DwUR6LIyXo7/SuuTJp1kM=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "04c1b180862888302ddfb2e3ad9eaa63afc60cf8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "ref": "v1.0.0",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "home-manager": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1682779989,
+        "narHash": "sha256-H8AjcIBYFYrlRobYJ+n1B+ZJ6TsaaeZpuLn4iRqVvr4=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "3144311f31194b537808ae6848f86f3dbf977d59",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
+    "lyrap-cursors": {
+      "inputs": {
+        "flake-utils": "flake-utils",
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "lastModified": 1683461333,
+        "narHash": "sha256-pAhu9WGOqDHqYWXTzGAxYfSQELL5rz29+YGFrRVeXJI=",
+        "owner": "b4mbus",
+        "repo": "lyrap-cursors-unofficial",
+        "rev": "a924a5882789ff6675ccf3dd7014501bbbbb4b89",
+        "type": "github"
+      },
+      "original": {
+        "owner": "b4mbus",
+        "repo": "lyrap-cursors-unofficial",
+        "type": "github"
+      }
+    },
+    "nix-index-db": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1683440419,
+        "narHash": "sha256-hhKqikDwHzrl8pdB482Jy9Ld+I+CpiYwIncEItxZVGA=",
+        "owner": "Mic92",
+        "repo": "nix-index-database",
+        "rev": "7b9e09d4a10d03f703ffa2e25806f0c81b4a7a23",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Mic92",
+        "repo": "nix-index-database",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1683207485,
+        "narHash": "sha256-gs+PHt/y/XQB7S8+YyBLAM8LjgYpPZUVFQBwpFSmJro=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "cc45a3f8c98e1c33ca996e3504adefbf660a72d1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-22.11",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1682786779,
+        "narHash": "sha256-m7QFzPS/CE8hbkbIVK4UStihAQMtczr0vSpOgETOM1g=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "08e4dc3a907a6dfec8bb3bbf1540d8abbffea22b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "home-manager": "home-manager",
+        "lyrap-cursors": "lyrap-cursors",
+        "nix-index-db": "nix-index-db",
+        "nixpkgs": "nixpkgs_2",
+        "tokyo-night-tmux": "tokyo-night-tmux"
+      }
+    },
+    "tokyo-night-tmux": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1672778545,
+        "narHash": "sha256-QrZYdu1ulCVcmI6jRHQXmQ2EIcNU5ZHxciY3TjopT+I=",
+        "owner": "janoamaral",
+        "repo": "tokyo-night-tmux",
+        "rev": "26617ca796c150e2db381b165a63e6d08694be94",
+        "type": "github"
+      },
+      "original": {
+        "owner": "janoamaral",
+        "repo": "tokyo-night-tmux",
+        "type": "github"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}

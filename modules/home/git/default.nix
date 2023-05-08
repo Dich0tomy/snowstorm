@@ -3,9 +3,6 @@
   pkgs,
   ...
 }: {
-  home.file.".ssh/allowed_signers".text =
-    "* ${builtins.readFile /home/b4mbus/.ssh/id_ed25519.pub}";
-
   programs.git = {
     enable = true;
 

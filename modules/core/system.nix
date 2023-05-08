@@ -37,10 +37,7 @@
       displayManager = {
         defaultSession = "none+awesome";
 
-        lightdm = {
-          enable = true;
-          greeter.enable = true;
-        };
+        sddm.enable = true;
       };
     };
   };
@@ -94,6 +91,8 @@
       LC_TIME = pl;
     };
   };
+
+  programs.dconf.enable = true;
 
   programs.nix-ld = {
     enable = true;

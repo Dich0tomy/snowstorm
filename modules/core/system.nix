@@ -31,9 +31,16 @@
 
     xserver = {
       enable = true;
-      displayManager.lightdm = {
-        enable = true;
-        greeter.enable = true;
+
+      windowManager.awesome.enable = true;
+
+      displayManager = {
+        defaultSession = "none+awesome";
+
+        lightdm = {
+          enable = true;
+          greeter.enable = true;
+        };
       };
     };
   };

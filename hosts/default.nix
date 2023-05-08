@@ -7,7 +7,7 @@
 
   bootloader = ../modules/core/bootloader.nix;
   core = ../modules/core;
-  nvidia = ../modules/nvidia;
+  # nvidia = ../modules/nvidia;
   home-manager-module = inputs.home-manager.nixosModules.home-manager;
 
   home-manager = {
@@ -33,7 +33,7 @@ in {
         { networking.hostName = "forest"; }
         ./forest/hardware-configuration.nix
         core
-        nvidia
+        # nvidia
         bootloader
         home-manager-module
 

@@ -3,8 +3,12 @@
   pkgs,
   ...
 }: {
+  programs.fish.enable = true;
+
   users.users.b4mbus = {
     isNormalUser = true;
+
+    shell = pkgs.fish;
 
     extraGroups = [
       "wheel"

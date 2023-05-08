@@ -40,10 +40,14 @@
         sddm.enable = true;
       };
     };
-  };
-
-  programs = {
-    fish.promptInit = ''eval "$(${pkgs.starship}/bin/starship init bash)"'';
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+      # If you want to use JACK applications, uncomment this
+      #jack.enable = true;
+    };
   };
 
   # compress half of the ram to use as swap

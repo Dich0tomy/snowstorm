@@ -11,8 +11,13 @@
 
     starship = {
       enable = true;
+
+      enableFishIntegration = true;
+
       settings = {
         scan_timeout = 5;
+
+        format = "$directory[$git_branch](fg:#a2a9b0) $character";
 
         character = {
           error_symbol = "[](bold red)";
@@ -35,11 +40,6 @@
 
     fish = {
       enable = true;
-
-
-      functions = {
-
-      };
 
       shellAbbrs = {
         m = "mkdir";

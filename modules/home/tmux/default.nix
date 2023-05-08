@@ -6,6 +6,8 @@
   programs.tmux = {
     enable = true;
 
+    shell = "${pkgs.fish}/bin/fish";
+
     keyMode = "vi";
     mouse = true;
 
@@ -50,8 +52,6 @@ in [
     extraConfig = ''
       CONFIG_DIR="~/.config/tmux/"
       CONFIG_PATH=$CONFIG_DIR/tmux.conf
-
-      source-file $CONFIG_DIR/theme.conf
 
       set -g default-terminal "xterm-256color"
       set -ga terminal-overrides ",*256col*:Tc"

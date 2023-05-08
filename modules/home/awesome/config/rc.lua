@@ -56,9 +56,9 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
-beautiful.font = 'Iosevka B4mbus 12.5'
+beautiful.font = 'Iosevka B4mbus 14'
 beautiful.hotkeys_font = 'Iosevka B4mbus 12.5'
-beautiful.hotkeys_description_font = 'Iosevka B4mbus 12.5'
+beautiful.hotkeys_description_font = 'Iosevka B4mbus 14'
 
 -- This is used later as the default terminal and editor to run.
 terminal = "kitty"

@@ -21,25 +21,23 @@
 
     users.b4mbus = ../modules/home;
   };
-
 in {
   # My nick (b4mbus) is a leet for bambus (pl), which means bamboo (en).
   # Naturally, this means the host is called forest.
 
   forest = nixpkgs.lib.nixosSystem {
     system = "x86_64-linux";
-    modules =
-      [
-        { networking.hostName = "forest"; }
-        ./forest/hardware-configuration.nix
-        core
-        nvidia
-        bootloader
-        home-manager-module
+    modules = [
+      {networking.hostName = "forest";}
+      ./forest/hardware-configuration.nix
+      core
+      nvidia
+      bootloader
+      home-manager-module
 
-        { inherit home-manager; }
-      ];
+      {inherit home-manager;}
+    ];
 
-    specialArgs = { inherit inputs; };
+    specialArgs = {inherit inputs;};
   };
 }

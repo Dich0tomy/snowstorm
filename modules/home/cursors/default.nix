@@ -1,6 +1,10 @@
-{ self, pkgs, ...
-}: let lyrap-cursors = self.packages.${pkgs.system}.lyrap-cursors; in {
-
+{
+  self,
+  pkgs,
+  ...
+}: let
+  lyrap-cursors = self.packages.${pkgs.system}.lyrap-cursors;
+in {
   home.file.".icons/default".source = "${lyrap-cursors}/share/icons/LyraP-Cursors";
 
   # home.pointerCursor = {

@@ -1,4 +1,8 @@
-{ config, pkgs, ... }: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   services.xserver.videoDrivers = [
     "nvidia"
     "nouveau"
@@ -10,7 +14,7 @@
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
   };
 
-# Optionally, you may need to select the appropriate driver version for your specific GPU.
+  # Optionally, you may need to select the appropriate driver version for your specific GPU.
   # environment.systemPackages = with pkgs; [
   #   vulkan-loader
   #   vulkan-validation-layers
@@ -30,7 +34,7 @@
 
       extraPackages = with pkgs; [
         nvidia-vaapi-driver
-          xorg.xf86videonouveau
+        xorg.xf86videonouveau
       ];
     };
   };

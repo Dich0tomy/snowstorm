@@ -4,7 +4,6 @@
   lib,
   ...
 }: {
-
   services = {
     dbus = {
       packages = [
@@ -17,9 +16,9 @@
     };
 
     udev.packages = [
-     pkgs.gnome.gnome-settings-daemon
-     pkgs.android-udev-rules
-     pkgs.ledger-udev-rules
+      pkgs.gnome.gnome-settings-daemon
+      pkgs.android-udev-rules
+      pkgs.ledger-udev-rules
     ];
 
     journald.extraConfig = ''
@@ -145,6 +144,5 @@
       enableRootSlice = true;
       enableUserServices = true;
     };
-
   };
 }

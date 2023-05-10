@@ -34,10 +34,10 @@
           format = "[$path]($style)[$read_only]($read_only_style)";
           style = "fg:#78a9ff";
           read_only = "[RO]";
-          read_only_style="fg:#393939";
+          read_only_style = "fg:#393939";
         };
 
-        git_branch.format =" [#](fg:#525252)$branch(:$remote_branch)";
+        git_branch.format = " [#](fg:#525252)$branch(:$remote_branch)";
       };
     };
 

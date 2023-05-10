@@ -24,7 +24,7 @@
 
       commit.gpgsign = true;
       gpg = {
-        format  ="ssh";
+        format = "ssh";
       };
 
       user.signingkey = "~/.ssh/id_ed25519.pub";
@@ -43,7 +43,7 @@
       s = "switch -C";
       b = "branch";
       l = ''
-      log --color --abbrev-commit --decorate --date=short --pretty="%C(yellow)%h%C(auto)%d %s (%C(bold blue)%an%Creset, %C(blue)%ar%C(reset))" -10
+        log --color --abbrev-commit --decorate --date=short --pretty="%C(yellow)%h%C(auto)%d %s (%C(bold blue)%an%Creset, %C(blue)%ar%C(reset))" -10
       '';
     };
   };

@@ -691,7 +691,7 @@ client.connect_signal(
 
 -- Autostart
 awful.spawn.with_shell('picom') -- composition manager or some shit idk
-awful.spawn.with_shell('~/Scripts/feh_set_bg &') -- composition manager or some shit idk
+awful.spawn.with_shell("feh --no-fehbg --bg-scale '/mnt/data/stuff/walls/vincent_van_gogh_smoking_skeleton_cropped_difference_glitched_pink_wow2.png' ") -- composition manager or some shit idk
 
 beautiful.useless_gap = 0
 beautiful.border_normal = '#555555'

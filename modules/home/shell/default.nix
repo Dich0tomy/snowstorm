@@ -17,13 +17,16 @@
       settings = {
         scan_timeout = 5;
 
-        format = "$directory[$git_branch](fg:#a2a9b0) $character";
+        format = "$directory[$git_branch](fg:#a2a9b0) ([$nix_shell](fg:#00ffff) )$character";
 
         character = {
-          error_symbol = "[](bold red)";
-          success_symbol = "[](bold green)";
-          vicmd_symbol = "[](bold yellow)";
-          format = "$directory[$git_branch](fg:#a2a9b0) $character";
+          error_symbol = "[❯](bold red)";
+          success_symbol = "[❯](bold green)";
+          vicmd_symbol = "[❯]((bold yellow)";
+        };
+
+        nix_shell = {
+          format = "\\[\\]";
         };
 
         directory = {
@@ -40,6 +43,10 @@
 
     fish = {
       enable = true;
+
+      functions = {
+        gitignore = "curl -sL https://www.gitignore.io/api/$argv";
+      };
 
       shellAbbrs = {
         m = "mkdir";

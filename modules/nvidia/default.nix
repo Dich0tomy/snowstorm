@@ -1,8 +1,8 @@
-{
-  pkgs,
-  ...
-}: {
-  services.xserver.videoDrivers = [ "nvidia" ];
+{ config, pkgs, ... }: {
+  services.xserver.videoDrivers = [
+    "nvidia"
+    "nouveau"
+  ];
 
   environment.variables = {
     GBM_BACKEND = "nvidia-drm";
@@ -10,18 +10,28 @@
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
   };
 
-  environment.systemPackages = [
-   pkgs.vulkan-loader
-   pkgs.vulkan-validation-layers
-   pkgs.vulkan-tools
-  ];
+# Optionally, you may need to select the appropriate driver version for your specific GPU.
+  # environment.systemPackages = with pkgs; [
+  #   vulkan-loader
+  #   vulkan-validation-layers
+  #   vulkan-tools
+  # ];
 
   hardware = {
-    nvidia = {
-      open = true;
-      powerManagement.enable = true;
-      modesetting.enable = true;
+    # nvidia = {
+    #   open = true;
+    #   powerManagement.enable = true;
+    #   modesetting.enable = true;
+    # };
+    nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
+
+    opengl = {
+      enable = true;
+
+      extraPackages = with pkgs; [
+        nvidia-vaapi-driver
+          xorg.xf86videonouveau
+      ];
     };
-    opengl.extraPackages = [ pkgs.nvidia-vaapi-driver ];
   };
 }

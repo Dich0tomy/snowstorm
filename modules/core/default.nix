@@ -11,5 +11,6 @@
     ./openssh.nix
     ./blocker.nix
     ./fonts.nix
+    ./filesystem.nix
   ];
 }

@@ -165,12 +165,12 @@ require('lazy').setup(
 
       end
     },
-    {
+    --[[ {
       'JosefLitos/reform.nvim',
       event = 'VeryLazy',
       build = 'make',
       config = true
-    },
+    }, ]]
     -- {
     --   'sunjon/Shade.nvim',
     --   event = 'BufLeave',
@@ -231,14 +231,14 @@ require('lazy').setup(
       },
       dependencies = { { "nvim-lua/plenary.nvim" } },
     },
-    {
+    --[[ {
       dir = '~/dev/projects/terminator.nvim',
       event = 'InsertEnter',
       config = function()
         local t = require('terminator')
         t.setup()
       end
-    },
+    }, ]]
     {
       'rcarriga/nvim-notify',
       lazy = false,

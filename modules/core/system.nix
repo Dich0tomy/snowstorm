@@ -59,7 +59,11 @@
   environment = {
     systemPackages = [
       pkgs.neovim
+      pkgs.ntfs3g
       pkgs.wget
+      pkgs.feh
+      pkgs.zip
+      pkgs.unzip
     ];
 
     variables = {
@@ -83,6 +87,7 @@
       LC_COLLATE = defaultLocale;
       LC_CTYPE = defaultLocale;
       LC_MESSAGES = defaultLocale;
+      LC_TIME = defaultLocale;
 
       LC_ADDRESS = pl;
       LC_IDENTIFICATION = pl;
@@ -92,7 +97,6 @@
       LC_NUMERIC = pl;
       LC_PAPER = pl;
       LC_TELEPHONE = pl;
-      LC_TIME = pl;
     };
   };
 

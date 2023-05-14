@@ -46,6 +46,7 @@
 
       functions = {
         gitignore = "curl -sL https://www.gitignore.io/api/$argv";
+        cd-flake = "cd $(nix flake metadata nixpkgs --json | nix run nixpkgs#jq -- -r .path)";
       };
 
       shellAbbrs = {

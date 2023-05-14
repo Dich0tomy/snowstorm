@@ -27,7 +27,7 @@
     ./git
     ./awesome
     ./kitty
-    # ./nvim
+    ./nvim
     ./shell
     ./zathura
     ./tmux

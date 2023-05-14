@@ -161,18 +161,15 @@ local clangd_config = {
 lsp.clangd.setup(
   vim.tbl_extend('keep', clangd_config, {
     cmd = {
-      'clangd',
+      os.getenv('CLANGD_PATH') or 'clangd',
       '--background-index',
       '--clang-tidy',
       '--completion-style=detailed',
       '--header-insertion=never',
       '--header-insertion-decorators',
       '--all-scopes-completion',
-      -- '--suggest-missing-includes',
-      -- '--cross-file-rename',
-      -- '--folding-ranges',
 
-      '--compile-commands-dir=${workspaceFolder}/build',
+      -- '--compile-commands-dir=${workspaceFolder}/build',
 
       '--enable-config',
       '--pch-storage=disk',

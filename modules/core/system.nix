@@ -10,6 +10,7 @@
         pkgs.dconf
         pkgs.gcr
         pkgs.udisks2
+        pkgs.greetd.tuigreet
       ];
 
       enable = true;
@@ -35,10 +36,10 @@
 
       displayManager = {
         defaultSession = "none+awesome";
-
         sddm.enable = true;
       };
     };
+
     pipewire = {
       enable = true;
       alsa.enable = true;
@@ -143,6 +144,16 @@
     oomd = {
       enableRootSlice = true;
       enableUserServices = true;
+    };
+
+    services.greetd.serviceConfig = {
+      Type = "idle";
+      StandardInput = "tty";
+      StandardOutput = "tty";
+      StandardError = "journal";
+      TTYReset = true;
+      TTYVHangup = true;
+      TTYVTDisallocate = true;
     };
   };
 }

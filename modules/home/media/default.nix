@@ -10,7 +10,4 @@
     pkgs.imv
     pkgs.pulsemixer
   ];
-
-  programs = {
-  };
 }

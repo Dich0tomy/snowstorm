@@ -20,8 +20,14 @@
     plugins = with pkgs; let
       tokyo-night-tmux = tmuxPlugins.mkTmuxPlugin {
         pluginName = "tokyo-night-tmux";
+        rtpFilePath = "tokyo-night.tmux";
         version = "0.1.0";
-        src = inputs.tokyo-night-tmux;
+        src = fetchFromGitHub {
+          owner = "B4mbus";
+          repo = "tokyo-night-tmux";
+          rev = "master";
+          sha256 = "d54W04CIfvWwT5/OW/r7VFS9+nF1j4I/gJQgLJ9Gf7M=";
+        };
       };
     in [
       tmuxPlugins.sensible

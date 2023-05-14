@@ -20,7 +20,7 @@
 
   xdg.configFile."nvim".source = ./nvim;
 
-  packages = [
+  home.packages = [
     pkgs.sumneko-lua-language-server
   ];
 }

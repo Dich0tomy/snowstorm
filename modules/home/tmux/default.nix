@@ -26,7 +26,7 @@
           owner = "B4mbus";
           repo = "tokyo-night-tmux";
           rev = "master";
-          sha256 = "d54W04CIfvWwT5/OW/r7VFS9+nF1j4I/gJQgLJ9Gf7M=";
+          sha256 = "R1t6E5Dd3Zq0MPdXnYyvU0+juC2/0pt6r+Hi3QeMKm4=";
         };
       };
     in [

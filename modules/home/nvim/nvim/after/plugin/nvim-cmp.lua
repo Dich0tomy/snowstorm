@@ -84,6 +84,7 @@ cmp.setup({
   },
 
   experimental = {
-    ghost_text = true
+    -- quickfix for nvim-cmp being st00pid https://github.com/hrsh7th/nvim-cmp/issues/1565
+    ghost_text = {}
   }
 })

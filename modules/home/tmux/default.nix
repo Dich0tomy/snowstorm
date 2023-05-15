@@ -88,30 +88,3 @@
     '';
   };
 }
-# ##### TOKYONIGHT THEME REWORK FOR TMUX
-# FG_BL_DARK=#ad11ad
-# FG_BL_LIGHT=#cf33cf
-# BG=#13131f
-# FG_GR_LIGHT=#a9b1d6
-# FG_GR_DARK=#3b4261
-# set -g mode-style "fg=$FG_BL_DARK,bg=#3b4261"
-# set -g message-style "fg=$FG_BL_LIGHT,bg=#3b4261"
-# set -g message-command-style "fg=$FG_BL_LIGHT,bg=#3b4261"
-# set -g pane-border-style "fg=#3b4261"
-# set -g pane-active-border-style "fg=$FG_BL_LIGHT"
-# set -g status "on"
-# set -g status-justify "left"
-# set -g status-style "fg=$FG_BL_LIGHT,bg=$BG"
-# set -g status-left-length "100"
-# set -g status-right-length "100"
-# set -g status-left-style NONE
-# set -g status-right-style NONE
-# set -g status-right ""
-# set -g status-right "#{pomodoro_status}%Y-%m-%d %A #[fg=$FG_GR_LIGHT]❮ #[fg=$FG_BL_LIGHT]%I:%M %p "
-# set -g status-left "#[fg=$FG_BL_LIGHT,bold] [#S] "
-# setw -g window-status-separator " "
-# setw -g window-status-style "NONE,fg=$FG_BL_LIGHT,bg=$BG"
-# setw -g window-status-activity-style "fg=$FG_GR_LIGHT,bg=$BG"
-# setw -g window-status-format "#[fg=$FG_GR_LIGHT] #I:#W #F"
-# setw -g window-status-current-format "#[bold, bg=$_BG] #I:#W #F"
-

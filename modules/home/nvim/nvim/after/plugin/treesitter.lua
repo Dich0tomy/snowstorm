@@ -25,6 +25,7 @@ treesitter.setup({
     'cpp',
     'norg',
     'norg_meta',
+    'glsl',
     'nix'
   },
 

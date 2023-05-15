@@ -8,7 +8,7 @@
 
     font = {
       name = "Iosevka B4mbus";
-      size = 13;
+      size = 12.5;
     };
 
     theme = "Tokyo Night";

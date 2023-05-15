@@ -221,7 +221,7 @@ awful.screen.connect_for_each_screen(function(s)
     }
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "bottom", screen = s })
+    s.mywibox = awful.wibar({ position = "top", screen = s })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
@@ -241,6 +241,10 @@ awful.screen.connect_for_each_screen(function(s)
             s.mylayoutbox,
         },
     }
+
+  client.connect_signal("property::fullscreen", function(c)
+    s.mywibox.visible = not c.fullscreen
+  end)
 end)
 -- }}}
 

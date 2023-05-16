@@ -353,10 +353,10 @@ require('lazy').setup(
       keys = { 'gc', 'gcc', 'gbc' },
       dependencies = { 'JoosepAlviste/nvim-ts-context-commentstring' },
     },
-    -- {
-    --   'ray-x/lsp_signature.nvim',
-    --   lazy = false
-    -- },
+    {
+      'ray-x/lsp_signature.nvim',
+      lazy = false
+    },
     {
       'hrsh7th/nvim-cmp',
       lazy = false, --event = 'InsertEnter',

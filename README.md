@@ -7,9 +7,12 @@
 
 B4mbus'es dotfiles. The name is inspired by Nix'es logo.
 
-(not working :()
-
-## 📦 Contents
+I use:
+  - X11 (wayland soon™)
+  - awesomewm (hyprland soon™)
+  - kitty
+  - tmux
+  - nvim
 
 ## ❤️ Special thanks to
 

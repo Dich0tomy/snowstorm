@@ -1,0 +1,31 @@
+#!/usr/bin/env fish
+
+function render
+  set file (mktemp --suffix .png);
+  set label (printf $original_text \
+  | string trim \
+  | string replace -ra ^ '\t\t' \
+  | string replace -r ^ \\\\ \
+  | string join '\n')
+
+  convert \
+    -size 1080x1080 \
+    -gravity west \
+    -background black \
+    -fill white \
+    -font Roboto \
+    -size 32 \
+    label:$label \
+    $file
+
+  mv $file ~
+
+  xclip -sel clip -t image/png -i $file
+  sleep 120 && rm $file &
+end
+
+
+read -z original_text
+printf $original_text
+
+render &

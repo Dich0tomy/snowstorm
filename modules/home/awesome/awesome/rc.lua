@@ -21,7 +21,7 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 local bandit = require('bandit')
 bandit.set_ss_dir( os.getenv('HOME') .. '/Pictures/Screenshots/' )
 
-local layouts = { 'pl', 'ru' }
+local layouts = { 'pl colemak_dh', 'ru' }
 local Polyglot = require('polyglot'):new(layouts)
 
 -- Enable hotkeys help widget for VIM and other apps
@@ -695,7 +695,7 @@ client.connect_signal(
 
 -- Autostart
 awful.spawn.with_shell('picom') -- composition manager or some shit idk
-awful.spawn.with_shell("feh --no-fehbg --bg-scale '/mnt/data/stuff/walls/vincent_van_gogh_smoking_skeleton_cropped_difference_glitched_pink_wow2.png' ") -- composition manager or some shit idk
+awful.spawn.with_shell("feh --no-fehbg --bg-center '/mnt/data/stuff/walls/jake_and_bmo_in_a_subway.jpg'")
 
 beautiful.useless_gap = 0
 beautiful.border_normal = '#555555'

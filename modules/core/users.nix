@@ -21,6 +21,12 @@
       "networkmanager"
       "power"
       "nix"
+
+      # qemu stuff or something
+      "libvirt"
+      "libvirt-qemu"
+      "kvm"
+      "disk"
     ];
 
     openssh.authorizedKeys.keys = [

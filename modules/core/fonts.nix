@@ -13,9 +13,11 @@ in {
     fontDir.enable = true;
 
     fonts = [
-      pkgs.maple-mono-NF
       nerd-fonts-symbols-only
       iosevka-b4mbus
+
+      pkgs.maple-mono-NF
+      pkgs.roboto
     ];
   };
 }

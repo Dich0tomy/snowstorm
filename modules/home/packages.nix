@@ -16,9 +16,12 @@
     brave
     discord
     pcmanfm
+
     fd
     exa
     ripgrep
+    bat
+
     tmux
     atuin
     dmenu
@@ -26,5 +29,8 @@
     scrot
     gh
     xclip
+
+    ghostscript
+    imagemagick_light
   ];
 }

@@ -29,12 +29,25 @@
           sha256 = "R1t6E5Dd3Zq0MPdXnYyvU0+juC2/0pt6r+Hi3QeMKm4=";
         };
       };
+
+      cowboy = tmuxPlugins.mkTmuxPlugin {
+        pluginName = "tmux-cowbowy";
+        rtpFilePath = "cowboy.tmux";
+        version = "0.1.0";
+        src = fetchFromGitHub {
+          owner = "tmux-plugins";
+          repo = "tmux-cowboy";
+          rev = "master";
+          sha256 = "sha256-KJNsdDLqT2Uzc25U4GLSB2O1SA/PThmDj9Aej5XjmJs=";
+        };
+      };
     in [
+      tokyo-night-tmux
+      cowboy
+
       tmuxPlugins.sensible
       tmuxPlugins.yank
       tmuxPlugins.fpp
-
-      tokyo-night-tmux
 
       # [Switch to session by name]: <prefix> + g
       # [Creates new session by name]: <prefix> + C

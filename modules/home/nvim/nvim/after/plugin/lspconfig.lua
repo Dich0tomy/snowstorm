@@ -112,11 +112,12 @@ local custom_on_attach =  function(client, bufnr)
     vim.keymap.set('n', 'gM', '<CMD>Glance implementations<CR>')
 
     vim.api.nvim_create_autocmd(
-      'BufWritePre',
+      'BufWritePost',
       {
         callback = function ()
-          if vim.b.format_on_save then
+          if not vim.tbl_isempty(vim.lsp.get_active_clients()) and vim.b.format_on_save then
             vim.lsp.buf.format()
+            vim.cmd.write();
           end
         end
       }
@@ -208,7 +209,7 @@ lsp.hls.setup(default_config)
 lsp.tsserver.setup(default_config)
 lsp.fennel_language_server.setup(default_config)
 lsp.rust_analyzer.setup(default_config)
-lsp.solargraph.setup(default_config)
+lsp.kotlin_language_server.setup(default_config)
 
 -- lsp.sorbet.setup(default_config)
 -- lsp.ruby_ls.setup(default_config)

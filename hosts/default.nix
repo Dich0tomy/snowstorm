@@ -30,6 +30,7 @@ in {
     modules = [
       {networking.hostName = "forest";}
       ./forest/hardware-configuration.nix
+
       core
       nvidia
       bootloader

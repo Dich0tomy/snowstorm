@@ -22,7 +22,9 @@
     ripgrep
     bat
 
-    tmux
+    veracrypt
+    keepassxc
+
     atuin
     dmenu
     starship

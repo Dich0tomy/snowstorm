@@ -35,6 +35,10 @@
       };
 
       user.signingkey = "~/.ssh/id_ed25519.pub";
+
+      pretty = {
+        b4-log = "%C(yellow #550000 bold)%h%C(auto)%d %C(white #772244) %s %C(auto) (%C(blue bold)%an%Creset, %C(#5499c7)%ar%C(reset))";
+      };
     };
 
     delta = {
@@ -52,6 +56,7 @@
       l = ''
         log --color --abbrev-commit --decorate --date=short --pretty="%C(yellow)%h%C(auto)%d %s (%C(bold blue)%an%Creset, %C(blue)%ar%C(reset))" -10
       '';
+      today = ''log --oneline --after="5am" --stat --stat-graph-width=50 --pretty=b4-log'';
     };
   };
 }

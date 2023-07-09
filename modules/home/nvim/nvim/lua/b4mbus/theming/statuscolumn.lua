@@ -120,7 +120,6 @@ _G.get_statuscol = function()
   local order = {
     "diagnostics",
     "sep",
-    -- "num",
     "gitsigns",
     "fold",
     "dap",
@@ -133,4 +132,5 @@ _G.get_statuscol = function()
   return table.concat(str_table)
 end
 
-vim.opt.statuscolumn = '%!v:lua._G.get_statuscol()'
+vim.opt.statuscolumn = "%{%v:lua.get_statuscol_diag(bufnr(), v:lnum)%}%=%{%v:lua.get_statuscol_gitsign(bufnr(), v:lnum)%}%C%{%v:lua.get_statuscol_dap(bufnr(), v:lnum)%}"
+-- vim.opt.statuscolumn = '%!v:lua._G.get_statuscol()'

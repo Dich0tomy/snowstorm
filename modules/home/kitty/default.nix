@@ -8,7 +8,7 @@
 
     font = {
       name = "Iosevka B4mbus";
-      size = 12.5;
+      size = 10;
     };
 
     theme = "Tokyo Night";
@@ -64,7 +64,7 @@
 
       dynamic_background_opacity = "yes";
 
-      background_opacity = "0.5";
+      background_opacity = "0.7";
     };
   };
 }

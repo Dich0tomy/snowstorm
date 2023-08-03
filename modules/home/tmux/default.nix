@@ -72,6 +72,8 @@
       CONFIG_DIR="~/.config/tmux/"
       CONFIG_PATH=$CONFIG_DIR/tmux.conf
 
+      set-option -g allow-passthrough on
+
       set -g default-terminal "xterm-256color"
       set -ga terminal-overrides ",*256col*:Tc"
       set -ga terminal-overrides '*:Ss=\E[%p1%d q:Se=\E[ q'

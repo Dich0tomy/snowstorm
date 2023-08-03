@@ -99,12 +99,12 @@ local iswap_mappings = {
 -- All the default keymapings
 wk.register(
   {
-    [' '] = { '<cmd>e $MYVIMRC<cr>', 'Open config'},
+    [' '] = { 'i <C-o>a <Esc>h', 'Space'},
     y = { '<cmd>silent :%y<cr>', 'Yank buffer'},
     e = { '<c-w>v<cmd>Oil<cr>', 'Open dirbuf' },
     ["ss"] = {
       function()
-        if vim.bo.ft == 'vim' or vim.bo.ft == 'lua' then vim.cmd.so('%') end
+        if vim.bo.ft == 'vim' or vim.bo.ft == 'lua' then vim.cmd.source('%') end
       end,
       'Source current file'
     },

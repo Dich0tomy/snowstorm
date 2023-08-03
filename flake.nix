@@ -20,6 +20,8 @@
       url = "github:janoamaral/tokyo-night-tmux";
       flake = false;
     };
+
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
 
   outputs = {self, ...} @ inputs: let

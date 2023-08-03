@@ -43,6 +43,7 @@ command('Aloof', 'source Session.vim')
 
 command('MS', 'Obsession Session.vim')
 
+vim.cmd[[cnoreabbrev <expr> NG ((getcmdtype() is# ':' && getcmdline() is# 'NG')?('Neogit'):('NG'))]]
 
 command(
   'Dealoof',

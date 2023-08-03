@@ -12,7 +12,7 @@ in {
   fonts = {
     fontDir.enable = true;
 
-    fonts = [
+    packages = [
       nerd-fonts-symbols-only
       iosevka-b4mbus
 

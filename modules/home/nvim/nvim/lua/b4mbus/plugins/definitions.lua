@@ -49,6 +49,10 @@ require('lazy').setup(
       ft = 'BufRead'
     },
     {
+      'Marskey/telescope-sg',
+      dependencies = { 'nvim-telescope/telescope.nvim' }
+    },
+    {
 
       "fdschmidt93/telescope-egrepify.nvim",
       dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
@@ -209,13 +213,13 @@ require('lazy').setup(
           ["core.dirman"] = { -- Manages Neorg workspaces
             config = {
               workspaces = {
-                notes = "~/Znanie/Notes",
                 campfire = "~/Znanie/Campfire",
                 projects = "~/Znanie/Projects",
                 languages = "~/Znanie/Languages",
-                cpplangnet = "~/Znanie/CppLangNet",
-                miceless = "~/Znanie/Miceless",
-                trading = "~/Znanie/Trading",
+                noba = "~/Znanie/Noba",
+                impactfx = "~/Znanie/ImpactFX",
+                spec = "~/Znanie/Spec",
+                books = "~/Znanie/Books",
               },
             },
           },
@@ -301,6 +305,28 @@ require('lazy').setup(
           },
         })
       end
+    },
+    {
+        'nvimdev/lspsaga.nvim',
+        event = 'BufEnter',
+        config = function()
+          require('lspsaga').setup({
+            lightbulb = { enable = false },
+            breadcrumbs = { enable = false },
+            breadcrumbs = { enable = false },
+            symbol_in_winbar = { enable = false },
+            outline = {
+              win_position = 'right',
+              win_width = 50,
+              auto_preview = false,
+              detail = true,
+            }
+          })
+        end,
+        dependencies = {
+            'nvim-treesitter/nvim-treesitter',
+            'kyazdani42/nvim-web-devicons'
+        }
     },
     'j-hui/fidget.nvim',
     'nvim-treesitter/nvim-treesitter',
@@ -648,7 +674,6 @@ require('lazy').setup(
       event = 'BufRead'
     },
     'Pocco81/true-zen.nvim',
-    'folke/noice.nvim',
     { 'potamides/pantran.nvim' },
     {
       'kevinhwang91/nvim-ufo',
@@ -684,15 +709,15 @@ require('lazy').setup(
               [[\\\@<!\%#]] .. esc(quote) .. [[\zs]]
             },
           }))
-          insx.add(quote, require('insx.recipe.auto_pair')({
-            open = quote,
-            close = quote,
-            ignore_pat = [[\\\%#]],
-          }))
-          insx.add('<BS>', require('insx.recipe.delete_pair')({
-            open_pat = esc(quote),
-            close_pat = esc(quote),
-          }))
+          -- insx.add(quote, require('insx.recipe.auto_pair')({
+          --   open = quote,
+          --   close = quote,
+          --   ignore_pat = [[\\\%#]],
+          -- }))
+          -- insx.add('<BS>', require('insx.recipe.delete_pair')({
+          --   open_pat = esc(quote),
+          --   close_pat = esc(quote),
+          -- }))
         end
 
         -- pairs
@@ -710,8 +735,8 @@ require('lazy').setup(
               [[\%#]] .. esc(close) .. [[\zs]]
             },
           }))
-          insx.add(open, require('insx.recipe.auto_pair')(oc))
-          insx.add('<BS>', require('insx.recipe.delete_pair')(oce))
+          -- insx.add(open, require('insx.recipe.auto_pair')(oc))
+          -- insx.add('<BS>', require('insx.recipe.delete_pair')(oce))
           insx.add('<Space>', require('insx.recipe.pair_spacing').increase(oce))
           insx.add('<BS>', require('insx.recipe.pair_spacing').decrease(oce))
           insx.add('<CR>', require('insx.recipe.fast_break')({
@@ -761,6 +786,48 @@ require('lazy').setup(
         'Cfind', 'Wall',
         'SudoWrite', 'SudoEdit'
       }
+    },
+    {
+      "NeogitOrg/neogit",
+      dependencies = "nvim-lua/plenary.nvim",
+      config = true,
+      cmd = {
+        'NG',
+        'Neogit'
+      },
+    },
+    {
+      name = 'image.nvim',
+      enabled = 'true',
+      dir = '~/sh/forks/image.nvim',
+      dev = true,
+      lazy = false,
+      config = function()
+        require("image").setup({
+          backend = "kitty",
+          integrations = {
+            markdown = {
+              enabled = true,
+              sizing_strategy = "auto",
+              download_remote_images = true,
+              clear_in_insert_mode = false,
+            },
+            neorg = {
+              enabled = true,
+              download_remote_images = true,
+              clear_in_insert_mode = false,
+            },
+          },
+          max_width = nil,
+          max_height = nil,
+          max_width_window_percentage = nil,
+          max_height_window_percentage = 50,
+          kitty_method = "normal",
+          kitty_tmux_write_delay = 10, -- makes rendering more reliable with Kitty+Tmux
+          window_overlap_clear_enabled = false, -- toggles images when windows are overlapped
+          window_overlap_clear_ft_ignore = { "cmp_menu", "cmp_docs", "" },
+        })
+      end
     },
     {
       'tpope/vim-fugitive',

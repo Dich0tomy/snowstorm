@@ -157,16 +157,7 @@ keymap({ 'n', 'v', 'i' }, '<C-f>5', function() booga(5) end, with_desc(silent_no
 -- keymap({ 'n', 'v' }, '<C-t>t', function) copy_to_plus_reg(vim.fn.strftime('%H:%M')) end, with_desc(silent_noremap, 'Copy 2 path elems'))
 
 -- a simple mapping that executes lua code in current line
-keymap(
-  'n',
-  ',e',
-  function()
-    local line = vim.api.nvim_get_current_line()
-    vim.pretty_print(vim.api.nvim_exec(line, true))
-  end
-)
-
-keymap('n', ',,', '<cmd>LF<cr>')
+keymap('n', ',', '<cmd>e#<cr>')
 
 -- hitting J doesnt change the cursor pos
 keymap({ 'n' }, 'J', 'mxJ`x')
@@ -178,7 +169,7 @@ keymap({ 'n', 'x' }, 'P', 'P=`]')
 keymap({ 'n', 'x' }, '<leader>p', 'p', silent_noremap)
 keymap({ 'n', 'x' }, '<leader>P', 'P', silent_noremap)
 
--- ; acts as sa kekw
+-- ; acts as <C-s>a kekw
 keymap({ 'n', 'x' }, ';', '<C-s>a', silent_remap)
 
 -- searches inside a visual selection
@@ -193,7 +184,6 @@ keymap({ 'x', 'n' }, 'yY', 'y%')
 -- vv selects matching region
 keymap({ 'n' }, 'vv', 'v%o')
 keymap({ 'n' }, 'VV', 'V%o')
-
 
 -- selecting something in insert mode and going back doesnt change the cursor poz
 keymap('n', 'v', 'mzv')
@@ -215,3 +205,7 @@ keymap(
     b4.P(('%s:%s / %s'):format(row, col, lines))
   end
 )
+
+-- H and L cycle buffers
+keymap({'n', 'x', 'o'}, 'H', '^')
+keymap({'n', 'x', 'o'}, 'L', 'g_')

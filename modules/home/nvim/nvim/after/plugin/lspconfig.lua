@@ -65,7 +65,7 @@ local custom_on_attach =  function(client, bufnr)
       R = { '<cmd>Telescope lsp_references<cr>', 'References' },
       d = { '<cmd>Telescope lsp_definitions<cr>', 'Definitions' },
       D = { '<cmd>lua vim.diagnostic.open_float()<cr>', 'Diagnostics float' },
-      i = { '<cmd>Telescope lsp_implementations<cr>', 'Implementations' },
+      i = { '<cmd>lua vim.lsp.inlay_hint(0, nil)<cr>', 'Toggle inlay hint for buffer' },
       s = { '<cmd>Telescope lsp_document_symbols<cr>', 'Local symbols' },
       S = { '<cmd>Telescope lsp_dynamic_workspace_symbols<cr>', 'Symbols' },
       l = { '<cmd>lua require "lsp_lines".toggle()<cr>', 'Toggle lsp_lines' },
@@ -141,12 +141,7 @@ local default_config = {
 local clangd_config = {
   single_file_support = true,
   capabilities = caps,
-  on_attach = function(c, b)
-    custom_on_attach(c, b)
-
-    require("clangd_extensions.inlay_hints").setup_autocmd()
-    require("clangd_extensions.inlay_hints").set_inlay_hints()
-  end,
+  on_attach = custom_on_attach,
   on_init = function(c, b)
     require("clangd_extensions.config").setup({
       extensions = {
@@ -207,8 +202,8 @@ lsp.lua_ls.setup(
 
 lsp.hls.setup(default_config)
 lsp.tsserver.setup(default_config)
-lsp.fennel_language_server.setup(default_config)
 lsp.rust_analyzer.setup(default_config)
+lsp.fennel_language_server.setup(default_config)
 lsp.kotlin_language_server.setup(default_config)
 
 -- lsp.sorbet.setup(default_config)

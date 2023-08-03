@@ -43,20 +43,25 @@ telescope.setup({
       },
     },
     egrepify = {
-      AND = true,
-      lnum = true,
-      lnum_hl = "EgrepifyLnum",
-      col = false,
-      col_hl = "EgrepifyCol",
-      title_hl = "EgrepifyTitle",
       prefixes = {
         ["!"] = {
           flag = "invert-match",
         },
       },
     },
+    ast_grep = {
+      command = {
+        "ast-grep",
+        "run",
+        "--json=stream",
+        "-p",
+      }, -- must have --json and -p
+      grep_open_files = true, -- search in opened files
+      lang = nil, -- string value, specify language for ast-grep `nil` for default
+    }
   }
 })
 
 telescope.load_extension('git_worktree')
-telescope.load_extension "egrepify"
+telescope.load_extension('egrepify')
+telescope.load_extension('ast_grep')

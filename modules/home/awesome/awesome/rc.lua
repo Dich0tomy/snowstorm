@@ -75,9 +75,9 @@ modkey = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
-    awful.layout.suit.tile,
-    awful.layout.suit.max,
-    awful.layout.suit.floating,
+  awful.layout.suit.max,
+  awful.layout.suit.floating,
+  awful.layout.suit.tile,
     -- awful.layout.suit.fair,
     -- awful.layout.suit.fair.horizontal,
     -- awful.layout.suit.spiral,
@@ -243,9 +243,9 @@ awful.screen.connect_for_each_screen(function(s)
         },
     }
 
-  client.connect_signal("property::fullscreen", function(c)
-    s.mywibox.visible = not c.fullscreen
-  end)
+  -- client.connect_signal("property::fullscreen", function(c)
+  --   s.mywibox.visible = not c.fullscreen
+  -- end)
 end)
 -- }}}
 
@@ -696,13 +696,13 @@ client.connect_signal(
 
 -- Autostart
 awful.spawn.with_shell('picom') -- composition manager or some shit idk
-awful.spawn.with_shell("feh --no-fehbg --bg-center '/mnt/data/stuff/walls/jake_and_bmo_in_a_subway.jpg'")
+awful.spawn.with_shell("feh --no-fehbg --bg-fill '/mnt/data/stuff/walls/atla_team.jpg' &")
 awful.spawn.with_shell("xset r rate 180 70")
 
-beautiful.useless_gap = 0
-beautiful.border_normal = '#555555'
-beautiful.border_focus = '#555555'
-beautiful.border_width = 0
+beautiful.useless_gap = 11
+beautiful.border_normal = '#000000'
+beautiful.border_focus = '#ffffff'
+beautiful.border_width = 1
 
 beautiful.border_marked = '#ff0000'
 

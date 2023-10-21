@@ -45,8 +45,14 @@ require('lazy').setup(
       end
     },
     {
-      'Vigemus/iron.nvim',
-      ft = 'BufRead'
+      "luckasRanarison/nvim-devdocs",
+      dependencies = {
+        "nvim-lua/plenary.nvim",
+        "nvim-telescope/telescope.nvim",
+        "nvim-treesitter/nvim-treesitter",
+      },
+      opts = {},
+      cmd = { "DevdocsFetch", "DevdocsInstall", "DevdocsUninstall", "DevdocsOpen", "DevdocsOpenFloat", "DevdocsUpdate", "DevdocsUpdateAll" },
     },
     {
       'Marskey/telescope-sg',
@@ -217,7 +223,7 @@ require('lazy').setup(
                 projects = "~/Znanie/Projects",
                 languages = "~/Znanie/Languages",
                 noba = "~/Znanie/Noba",
-                impactfx = "~/Znanie/ImpactFX",
+                cfs = "~/Znanie/CFS",
                 spec = "~/Znanie/Spec",
                 books = "~/Znanie/Books",
               },
@@ -229,7 +235,7 @@ require('lazy').setup(
               template = {
                 { 'title', '' },
                 { 'description', '' },
-                { 'authors', 'B4mbus (Daniel Zaradny)' },
+                { 'authors', 'B4mbus' },
                 { 'categories', 'notes' },
                 { 'created', function() return os.date('%Y-%m-%d') end },
                 { 'updated', function() return os.date('%Y-%m-%d') end },
@@ -307,29 +313,39 @@ require('lazy').setup(
       end
     },
     {
-        'nvimdev/lspsaga.nvim',
-        event = 'BufEnter',
-        config = function()
-          require('lspsaga').setup({
-            lightbulb = { enable = false },
-            breadcrumbs = { enable = false },
-            breadcrumbs = { enable = false },
-            symbol_in_winbar = { enable = false },
-            outline = {
-              win_position = 'right',
-              win_width = 50,
-              auto_preview = false,
-              detail = true,
-            }
-          })
-        end,
-        dependencies = {
-            'nvim-treesitter/nvim-treesitter',
-            'kyazdani42/nvim-web-devicons'
-        }
+      "jackMort/pommodoro-clock.nvim",
+      config = function()
+        require("pommodoro-clock").setup({
+          modes = {
+            ["work"] = { "POMMODORO", 35 },
+            ["short_break"] = { "SHORT BREAK", 5 },
+            ["long_break"] = { "LONG BREAK", 15 },
+          },
+          animation_duration = 300,
+          animation_fps = 30,
+          sound = "none",
+        })
+
+        local function pc(func)
+          return "lua require('pommodoro-clock')." .. func
+        end
+        local cmd = function(a, b) vim.api.nvim_create_user_command(a, b, {}) end
+
+        cmd('PCS', pc('start("work")'))
+        cmd('PCB', pc('start("short_break")'))
+        cmd('PCL', pc('start("long_break")'))
+        cmd('PCP', pc('toggle_pause()'))
+        cmd('PCC', pc('close()'))
+      end,
+      cmd = { "PCS", "PCB", "PCL", "PCP", "PCC" },
+      dependencies = {
+        "MunifTanjim/nui.nvim",
+      }
     },
     'j-hui/fidget.nvim',
-    'nvim-treesitter/nvim-treesitter',
+    {
+      'nvim-treesitter/nvim-treesitter',
+    },
     {
       'nvim-treesitter/playground',
       cmd = 'TSPlaygroundToggle'
@@ -796,39 +812,39 @@ require('lazy').setup(
         'Neogit'
       },
     },
-    {
-      name = 'image.nvim',
-      enabled = 'true',
-      dir = '~/sh/forks/image.nvim',
-      dev = true,
-      lazy = false,
-      config = function()
-        require("image").setup({
-          backend = "kitty",
-          integrations = {
-            markdown = {
-              enabled = true,
-              sizing_strategy = "auto",
-              download_remote_images = true,
-              clear_in_insert_mode = false,
-            },
-            neorg = {
-              enabled = true,
-              download_remote_images = true,
-              clear_in_insert_mode = false,
-            },
-          },
-          max_width = nil,
-          max_height = nil,
-          max_width_window_percentage = nil,
-          max_height_window_percentage = 50,
-          kitty_method = "normal",
-          kitty_tmux_write_delay = 10, -- makes rendering more reliable with Kitty+Tmux
-          window_overlap_clear_enabled = false, -- toggles images when windows are overlapped
-          window_overlap_clear_ft_ignore = { "cmp_menu", "cmp_docs", "" },
-        })
-      end
-    },
+    -- {
+    --   name = 'image.nvim',
+    --   enabled = 'true',
+    --   dir = '~/sh/forks/image.nvim',
+    --   dev = true,
+    --   lazy = false,
+    --   config = function()
+    --     require("image").setup({
+    --       backend = "kitty",
+    --       integrations = {
+    --         markdown = {
+    --           enabled = true,
+    --           sizing_strategy = "auto",
+    --           download_remote_images = true,
+    --           clear_in_insert_mode = false,
+    --         },
+    --         neorg = {
+    --           enabled = true,
+    --           download_remote_images = true,
+    --           clear_in_insert_mode = false,
+    --         },
+    --       },
+    --       max_width = nil,
+    --       max_height = nil,
+    --       max_width_window_percentage = nil,
+    --       max_height_window_percentage = 50,
+    --       kitty_method = "normal",
+    --       kitty_tmux_write_delay = 10, -- makes rendering more reliable with Kitty+Tmux
+    --       window_overlap_clear_enabled = false, -- toggles images when windows are overlapped
+    --       window_overlap_clear_ft_ignore = { "cmp_menu", "cmp_docs", "" },
+    --     })
+    --   end
+    -- },
     {
       'tpope/vim-fugitive',
       cmd = {

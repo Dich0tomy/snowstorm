@@ -9,7 +9,6 @@ treesitter.setup({
   ensure_installed = {
     'html',
     'vimdoc',
-    'ruby',
     'rust',
     'lua',
     'fennel',
@@ -26,10 +25,10 @@ treesitter.setup({
     'norg',
     'norg_meta',
     'glsl',
-    'nix'
+    'nix',
   },
 
-  sync_install = false,
+  sync_install = true,
 
   highlight = {
     enable = true,

@@ -58,8 +58,8 @@ end
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 beautiful.font = 'Iosevka B4mbus 14'
-beautiful.hotkeys_font = 'Iosevka B4mbus 12.5'
-beautiful.hotkeys_description_font = 'Iosevka B4mbus 14'
+beautiful.hotkeys_font = 'Iosevka B4mbus 11'
+beautiful.hotkeys_description_font = 'Iosevka B4mbus 11.5'
 
 -- This is used later as the default terminal and editor to run.
 terminal = "kitty"
@@ -243,6 +243,18 @@ awful.screen.connect_for_each_screen(function(s)
         },
     }
 
+    s.mywibox.visible = false
+
+    globalkeys = gears.table.join(globalkeys,
+      awful.key(
+        { modkey },
+        "w",
+        function ()
+          s.mywibox.visible = not s.mywibox.visible
+        end,
+        { description = "toggle wibar", group = "awesome" }
+      )
+    )
   -- client.connect_signal("property::fullscreen", function(c)
   --   s.mywibox.visible = not c.fullscreen
   -- end)
@@ -258,8 +270,7 @@ root.buttons(gears.table.join(
 -- }}}
 
 -- {{{ Key bindings
-globalkeys = gears.table.join(
-
+globalkeys = gears.table.join(globalkeys,
     awful.key(
       { },
       "Print",
@@ -321,9 +332,6 @@ globalkeys = gears.table.join(
         end,
         {description = "focus previous by index", group = "client"}
     ),
-    awful.key({ modkey,           }, "w", function () mymainmenu:show() end,
-              {description = "show main menu", group = "awesome"}),
-
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end,
               {description = "swap with next client by index", group = "client"}),
@@ -396,10 +404,10 @@ globalkeys = gears.table.join(
     awful.key(
       { modkey }, "d",
       function()
-        awful.util.spawn('Discord')
+        awful.util.spawn('discord')
       end,
       {
-        description = "run brave",
+        description = "run discord",
         group = "launcher"
       }
     ),
@@ -407,10 +415,10 @@ globalkeys = gears.table.join(
     awful.key(
       { modkey }, "b",
       function()
-        awful.util.spawn('brave-browser')
+        awful.util.spawn('librewolf')
       end,
       {
-        description = "run brave",
+        description = "run librewolf",
         group = "launcher"
       }
     ),
@@ -560,7 +568,7 @@ awful.rules.rules = {
     },
 
     {
-      rule = { class = 'brave-browser' },
+      rule = { class = 'librewolf' },
       properties = { opacity = 1, maximized = false, floating = false }
     },
 
@@ -587,6 +595,7 @@ awful.rules.rules = {
           "Kruler",
           "MessageWin",  -- kalarm.
           "Sxiv",
+          "keepasxc",
           "Tor Browser", -- Needs a fixed window size to avoid fingerprinting by screen size.
           "Wpa_gui",
           "veromix",
@@ -696,12 +705,12 @@ client.connect_signal(
 
 -- Autostart
 awful.spawn.with_shell('picom') -- composition manager or some shit idk
-awful.spawn.with_shell("feh --no-fehbg --bg-fill '/mnt/data/stuff/walls/atla_team.jpg' &")
+awful.spawn.with_shell("feh --no-fehbg --bg-center '/mnt/data/stuff/walls/the-cold.png' &")
 awful.spawn.with_shell("xset r rate 180 70")
 
 beautiful.useless_gap = 11
 beautiful.border_normal = '#000000'
-beautiful.border_focus = '#ffffff'
+beautiful.border_focus = '#333333'
 beautiful.border_width = 1
 
 beautiful.border_marked = '#ff0000'

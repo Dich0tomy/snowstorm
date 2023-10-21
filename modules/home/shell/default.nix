@@ -7,7 +7,7 @@
   programs = {
     nix-index.enable = true;
 
-    exa.enable = true;
+    # exa.enable = true;
 
     starship = {
       enable = true;
@@ -53,7 +53,7 @@
         m = "mkdir";
         j = "just";
         n = "nvim";
-        ls = "exa --group-directories-first -l";
+        ls = "eza --group-directories-first -l";
         g = "git";
         gs = "git status";
         gl = "git l -10";

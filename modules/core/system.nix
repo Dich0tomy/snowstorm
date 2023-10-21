@@ -76,7 +76,7 @@
 
     variables = {
       EDITOR = "nvim";
-      BROWSER = "brave";
+      BROWSER = "librewolf";
     };
   };
 

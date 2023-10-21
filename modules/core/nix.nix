@@ -53,6 +53,7 @@
       max-free = ${toString (1024 * 1024 * 1024)}
     '';
     settings = {
+      # automatically deduplicates store periodically
       auto-optimise-store = true;
       # use binary cache, its not gentoo
       builders-use-substitutes = true;
@@ -77,7 +78,6 @@
         "https://cache.nixos.org"
         "https://fortuneteller2k.cachix.org"
         "https://nix-community.cachix.org"
-        "https://webcord.cachix.org"
         "https://nixpkgs-unfree.cachix.org"
       ];
 
@@ -85,7 +85,6 @@
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
         "fortuneteller2k.cachix.org-1:kXXNkMV5yheEQwT0I4XYh1MaCSz+qg72k8XAi2PthJI="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-        "webcord.cachix.org-1:l555jqOZGHd2C9+vS8ccdh8FhqnGe8L78QrHNn+EFEs="
         "nixpkgs-unfree.cachix.org-1:hqvoInulhbV4nJ9yJOEr+4wxhDV4xq2d1DK7S6Nj6rs="
       ];
     };

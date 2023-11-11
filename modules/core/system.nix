@@ -149,10 +149,10 @@
     # Systemd OOMd
     # Fedora enables these options by default. See the 10-oomd-* files here:
     # https://src.fedoraproject.org/rpms/systemd/tree/acb90c49c42276b06375a66c73673ac3510255
-    oomd = {
-      enableRootSlice = true;
-      enableUserServices = true;
-    };
+    # oomd.enable = false; = {
+    #   enableRootSlice = true;
+    #   enableUserServices = true;
+    # };
 
     services.greetd.serviceConfig = {
       Type = "idle";

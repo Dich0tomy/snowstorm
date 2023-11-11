@@ -3,11 +3,11 @@
   pkgs,
   config,
   ...
-}: let vencord-discord = pkgs.discord.override {
-  nss = pkgs.nss_latest;
-  withOpenASAR = true;
-  withVencord = true;
-}; in {
+}: let vencord-discord = (pkgs.discord.override {
+  nss = pkgs.nss_latest; # Open links with firefox
+  withOpenASAR = true; # Faster startup, more privacy, some mods
+  # withVencord = true; # Cool client mod
+}); in {
   nixpkgs.config.allowUnfree = true;
 
   home.packages = [
@@ -19,18 +19,20 @@
     pkgs.easyeffects
     pkgs.picom
     pkgs.librewolf
-    pkgs.brave
     vencord-discord
     pkgs.pcmanfm
 
+    pkgs.ytmdesktop
+
     pkgs.obs-studio
 
-    pkgs.prismlauncher
+    pkgs.gromit-mpx
 
     pkgs.fd
     pkgs.eza
     pkgs.ripgrep
     pkgs.bat
+    pkgs.broot
 
     pkgs.veracrypt
     pkgs.keepassxc
@@ -41,8 +43,15 @@
     pkgs.scrot
     pkgs.gh
     pkgs.xclip
-
-    pkgs.ghostscript
-    pkgs.imagemagick_light
   ];
 }
+
+# Hello. I'm using Nix and trying to use vencord, This is my package:
+# ```nix
+# let vencord-discord = (pkgs.discord.override {
+#   nss = pkgs.nss_latest; # Open links with firefox
+#   withOpenASAR = true; # Faster startup, more privacy, some mods
+#   # withVencord = true; # Cool client mod
+# });
+# ```
+# No matter what I do, if I disable/enable OpenAsar, leave the default nss version etc. vencord gets stuck at the second discord screen and doesn't go any further.

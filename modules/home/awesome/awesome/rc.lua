@@ -706,6 +706,7 @@ client.connect_signal(
 -- Autostart
 awful.spawn.with_shell('picom') -- composition manager or some shit idk
 awful.spawn.with_shell("feh --no-fehbg --bg-center '/mnt/data/stuff/walls/the-cold.png' &")
+awful.spawn.with_shell('gromit-mpx &')
 awful.spawn.with_shell("xset r rate 180 70")
 
 beautiful.useless_gap = 11

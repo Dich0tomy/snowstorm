@@ -55,10 +55,6 @@ require('lazy').setup(
       cmd = { "DevdocsFetch", "DevdocsInstall", "DevdocsUninstall", "DevdocsOpen", "DevdocsOpenFloat", "DevdocsUpdate", "DevdocsUpdateAll" },
     },
     {
-      'Marskey/telescope-sg',
-      dependencies = { 'nvim-telescope/telescope.nvim' }
-    },
-    {
 
       "fdschmidt93/telescope-egrepify.nvim",
       dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
@@ -412,7 +408,7 @@ require('lazy').setup(
     },
     {
       'nvim-telescope/telescope.nvim',
-      tag = '0.1.0',
+      tag = '0.1.4',
     },
     {
       'numToStr/Comment.nvim',

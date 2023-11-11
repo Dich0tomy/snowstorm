@@ -57,9 +57,7 @@
 
       s = "switch -C";
       b = "branch";
-      l = ''
-        log --color --abbrev-commit --decorate --date=short --pretty="%C(yellow)%h%C(auto)%d %s (%C(bold blue)%an%Creset, %C(blue)%ar%C(reset))" -10
-      '';
+      l = ''log --color --abbrev-commit --decorate --date=short --pretty="%C(yellow)%h%C(auto)%d %s (%C(bold blue)%an%Creset, %C(blue)%ar%C(reset))" -10'';
       today = ''log --oneline --after="5am" --stat --stat-graph-width=50 --pretty=b4-log'';
       after-breakfast = ''!git log --oneline --after="8am" --pretty=b4-log && git diff HEAD~$(git rev-list --count --after="8am" HEAD) --shortstat'';
     };

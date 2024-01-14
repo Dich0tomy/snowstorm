@@ -7,11 +7,9 @@
     enable = true;
 
     font = {
-      name = "Iosevka B4mbus";
-      size = 10.5;
+      name = "Jetbrains Mono";
+      size = 11;
     };
-
-    theme = "Tokyo Night";
 
     extraConfig = ''
       # Pomicons
@@ -52,6 +50,52 @@
 
       # Misc Code Point Fixes
       symbol_map U+21B5,U+25B8,U+2605,U+2630,U+2632,U+2714,U+E0A3,U+E615,U+E62B Symbols Nerd Font Mono
+
+
+      ## name: Kanagawa
+      ## license: MIT
+      ## author: Tommaso Laurenzi
+      ## upstream: https://github.com/rebelot/kanagawa.nvim/
+
+
+      background #1F1F28
+      foreground #DCD7BA
+      selection_background #2D4F67
+      selection_foreground #C8C093
+      url_color #72A7BC
+      cursor #C8C093
+
+      # Tabs
+      active_tab_background #1F1F28
+      active_tab_foreground #C8C093
+      inactive_tab_background  #1F1F28
+      inactive_tab_foreground #727169
+      #tab_bar_background #15161E
+
+      # normal
+      color0 #16161D
+      color1 #C34043
+      color2 #76946A
+      color3 #C0A36E
+      color4 #7E9CD8
+      color5 #957FB8
+      color6 #7A9589
+      color7 #C8C093
+
+      # bright
+      color8  #727169
+      color9  #E82424
+      color10 #98BB6C
+      color11 #E6C384
+      color12 #7FB4CA
+      color13 #938AA9
+      color14 #7AA89F
+      color15 #DCD7BA
+
+
+      # extended colors
+      color16 #FFA066
+      color17 #FF5D62
     '';
 
     settings = {
@@ -61,10 +105,6 @@
 
       # top right bottom left
       window_padding_width = 0;
-
-      dynamic_background_opacity = "yes";
-
-      background_opacity = "0.9";
     };
   };
 }

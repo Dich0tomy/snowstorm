@@ -6,5 +6,7 @@ vim.opt_local.listchars = {
   tab = '  '
 }
 
-vim.opt.conceallevel = 1
+vim.opt.conceallevel = 3
 vim.o.concealcursor = ''
+
+vim.opt.spell = true

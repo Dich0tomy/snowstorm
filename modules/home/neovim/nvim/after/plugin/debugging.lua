@@ -5,17 +5,18 @@ if not ok then
   return
 end
 
-dap.adapters.cppdbg = {
-  id = 'cppdbg',
-  type = 'executable',
-  command = '/home/b4mbus/Executable/OpenDebugAD7',
-}
+dap.adapters.gdb = { type = "executable", command = "gdb", args = { "-i", "mi" } }
+-- dap.adapters.cppdbg = {
+--   id = 'cppdbg',
+--   type = 'executable',
+--   command = '/home/b4mbus/Executable/OpenDebugAD7',
+-- }
 
-dap.adapters.lldb = {
-  type = "executable",
-  command = vim.fn.exepath("lldb-vscode"),
-  name = "lldb",
-}
+-- dap.adapters.lldb = {
+--   type = "executable",
+--   command = vim.fn.exepath("lldb-vscode"),
+--   name = "lldb",
+-- }
 
 
 -- dap.configurations.cpp = {
@@ -36,7 +37,7 @@ dap.adapters.lldb = {
 dap.configurations.cpp = {
   {
     name = "Launch file",
-    type = "cppdbg",
+    type = "gdb",
     request = "launch",
     program = function()
       return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')

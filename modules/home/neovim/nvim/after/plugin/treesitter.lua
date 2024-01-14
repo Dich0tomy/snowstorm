@@ -7,16 +7,17 @@ end
 
 treesitter.setup({
   ensure_installed = {
-    'html',
-    'vimdoc',
-    'rust',
+    'c',
     'lua',
-    'fennel',
+    'vim',
+    'vimdoc',
     'query',
+    'html',
+    'rust',
+    'fennel',
     'markdown',
     'markdown_inline',
     'haskell',
-    'vim',
     'regex',
     'bash',
     'fish',
@@ -29,6 +30,16 @@ treesitter.setup({
   },
 
   sync_install = true,
+
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = "gnn",
+      node_incremental = "grn",
+      scope_incremental = "grc",
+      node_decremental = "grm",
+    }
+  },
 
   highlight = {
     enable = true,

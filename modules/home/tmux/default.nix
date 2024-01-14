@@ -18,18 +18,6 @@
     terminal = "tmux-256color";
 
     plugins = with pkgs; let
-      tokyo-night-tmux = tmuxPlugins.mkTmuxPlugin {
-        pluginName = "tokyo-night-tmux";
-        rtpFilePath = "tokyo-night.tmux";
-        version = "0.1.0";
-        src = fetchFromGitHub {
-          owner = "B4mbus";
-          repo = "tokyo-night-tmux";
-          rev = "master";
-          sha256 = "R1t6E5Dd3Zq0MPdXnYyvU0+juC2/0pt6r+Hi3QeMKm4=";
-        };
-      };
-
       cowboy = tmuxPlugins.mkTmuxPlugin {
         pluginName = "tmux-cowbowy";
         rtpFilePath = "cowboy.tmux";
@@ -40,10 +28,23 @@
           rev = "master";
           sha256 = "sha256-KJNsdDLqT2Uzc25U4GLSB2O1SA/PThmDj9Aej5XjmJs=";
         };
+
       };
+
+        minimal-status-bar = tmuxPlugins.mkTmuxPlugin {
+        	pluginName = "minimal-tmux-status";
+					rtpFilePath = "minimal.tmux";
+					version = "0.1.0";
+					src = fetchFromGitHub {
+						owner = "niksingh710";
+						repo = "minimal-tmux-status";
+						rev = "master";
+						sha256 = "sha256-v2Sxu/zNwgLVlbTe4KZOpHhV5Tlanxe6CpmAQ0CnHkU=";
+					};
+        };
     in [
-      tokyo-night-tmux
       cowboy
+      minimal-status-bar
 
       tmuxPlugins.sensible
       tmuxPlugins.yank
@@ -69,10 +70,9 @@
     ];
 
     extraConfig = ''
-      CONFIG_DIR="~/.config/tmux/"
-      CONFIG_PATH=$CONFIG_DIR/tmux.conf
+      set -gq allow-passthrough on
 
-      set-option -g allow-passthrough on
+      set -g visual-activity off
 
       set -g default-terminal "xterm-256color"
       set -ga terminal-overrides ",*256col*:Tc"
@@ -87,8 +87,6 @@
       bind C-k select-pane -U
       bind C-j select-pane -D
 
-      bind c new-window -c $CONFIG_DIR "nvim $CONFIG_PATH" \; rename-window "tmux.conf"
-
       bind q kill-window
 
       bind | split-window -h -c "#{pane_current_path}"
@@ -98,8 +96,6 @@
       unbind '"'
 
       bind "'" new-window -c "~"
-
-      bind r source-file $CONFIG_PATH
     '';
   };
 }

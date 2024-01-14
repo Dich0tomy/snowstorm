@@ -38,7 +38,7 @@ end
 
 vim.keymap.set(
   { 'i', 's' },
-  '<c-k>',
+  '<a-k>',
   make_ls_executor(function(ls)
     if ls.expand_or_jumpable() then
       ls.expand_or_jump()
@@ -48,7 +48,7 @@ vim.keymap.set(
 
 vim.keymap.set(
   { 'i', 's' },
-  '<c-j>',
+  '<a-j>',
   make_ls_executor(function(ls)
     if ls.jumpable() then
       ls.jump(-1)
@@ -58,7 +58,7 @@ vim.keymap.set(
 
 vim.keymap.set(
   { 'i', 's' },
-  '<c-l>',
+  '<a-l>',
   make_ls_executor(function(ls)
     if ls.choice_active() then
       ls.change_choice(1)

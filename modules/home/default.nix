@@ -10,6 +10,7 @@
     inputs.neovim-nightly-overlay.overlay
   ]; */
 
+  # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   config.home.stateVersion = "23.05";
 
   config.home.extraOutputsToInstall = [
@@ -31,7 +32,7 @@
     ./git
     ./awesome
     ./kitty
-    ./nvim
+    ./neovim
     ./shell
     ./zathura
     ./tmux

@@ -7,8 +7,6 @@
   programs = {
     nix-index.enable = true;
 
-    # exa.enable = true;
-
     starship = {
       enable = true;
 
@@ -17,16 +15,16 @@
       settings = {
         scan_timeout = 5;
 
-        format = "$directory[$git_branch](fg:#a2a9b0) ([$nix_shell](fg:#00ffff) )$character";
+        format = "$directory[$git_branch](fg:#a2a9b0) ([$nix_shell](fg:#00fff0) )$character";
 
         character = {
           error_symbol = "[❯](bold red)";
           success_symbol = "[❯](bold green)";
-          vicmd_symbol = "[❯]((bold yellow)";
+          vicmd_symbol = "[❯](bold yellow)";
         };
 
         nix_shell = {
-          format = "\\[\\]";
+          format = "\\[\\$\\]";
         };
 
         directory = {
@@ -54,6 +52,9 @@
         j = "just";
         n = "nvim";
         ls = "eza --group-directories-first -l";
+				la = "eza --group-directories-first -la";
+				nl = "nix-locate";
+
         g = "git";
         gs = "git status";
         gl = "git l -10";

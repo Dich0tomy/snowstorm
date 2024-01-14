@@ -27,7 +27,7 @@
     pkgs.ast-grep
     pkgs.luarocks
     pkgs.imagemagick_light
-    # pkgs.luajitPackages.magick -- UNSTABLE
+    pkgs.luajitPackages.magick
     pkgs.sumneko-lua-language-server
   ];
 }

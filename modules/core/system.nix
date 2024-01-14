@@ -56,7 +56,7 @@
     };
   };
 
-  virtualisation.libvirtd.enable = true;
+  # virtualisation.libvirtd.enable = true;
 
   # compress half of the ram to use as swap
   zramSwap = {

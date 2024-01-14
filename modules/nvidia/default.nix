@@ -22,19 +22,23 @@
   # ];
 
   hardware = {
-    # nvidia = {
-    #   open = true;
-    #   powerManagement.enable = true;
-    #   modesetting.enable = true;
-    # };
-    nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
+    nvidia = {
+      # open = true;
+      # powerManagement.enable = true;
+
+      nvidiaSettings = true;
+
+      modesetting.enable = true;
+			package = config.boot.kernelPackages.nvidiaPackages.stable;
+    };
 
     opengl = {
       enable = true;
 
-      extraPackages = with pkgs; [
-        nvidia-vaapi-driver
-        xorg.xf86videonouveau
+      extraPackages = [
+        pkgs.nvidia-vaapi-driver
+        pkgs.xorg.xf86videonouveau
+				pkgs.mesa.drivers
       ];
     };
   };

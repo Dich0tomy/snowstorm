@@ -5,6 +5,7 @@
   inputs,
   ...
 }: {
+  programs.direnv.enable = true;
   environment = {
     # set channels (backwards compatibility)
     etc = {

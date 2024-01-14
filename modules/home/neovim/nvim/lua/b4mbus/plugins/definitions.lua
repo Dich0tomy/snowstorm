@@ -8,8 +8,33 @@ end
 require('lazy').setup(
   {
     {
-      'folke/tokyonight.nvim',
+      'Biscuit-Colorscheme/nvim',
+      -- lazy = false,
+      config = function()
+        -- vim.cmd.colorscheme('biscuit')
+      end
+    },
+
+    {
+      'https://github.com/rebelot/kanagawa.nvim',
       lazy = false,
+      config = function()
+        require('kanagawa').setup({
+            undercurl = false, -- makes it use underline instead of undercurl
+            dimInactive = true,
+            theme = "wave",
+            background = {
+                dark = "wave",
+                light = "lotus"
+            },
+        })
+
+        vim.cmd("colorscheme kanagawa")
+      end
+    },
+    {
+      'folke/tokyonight.nvim',
+      -- lazy = false,
       config = function()
         require('tokyonight').setup({
           on_highlights = function(hls)
@@ -41,7 +66,7 @@ require('lazy').setup(
           end
         })
 
-        vim.cmd.colorscheme('tokyonight-night')
+        -- vim.cmd.colorscheme('tokyonight-night')
       end
     },
     {
@@ -100,7 +125,7 @@ require('lazy').setup(
           -- By default glance will open preview "embedded" within your active window
           -- when `detached` is enabled, glance will render above all existing windows
           -- and won't be restiricted by the width of your active window
-          detached = true,
+          -- detached = true,
 
           -- Or use a function to enable `detached` only when the active window is too small
           -- (default behavior)
@@ -222,6 +247,7 @@ require('lazy').setup(
                 cfs = "~/Znanie/CFS",
                 spec = "~/Znanie/Spec",
                 books = "~/Znanie/Books",
+                strategy = "~/Znanie/Strategy",
               },
             },
           },
@@ -242,6 +268,15 @@ require('lazy').setup(
         },
       },
       dependencies = { { "nvim-lua/plenary.nvim" } },
+    },
+    {
+
+      'https://github.com/mountain-theme/vim',
+      branch = 'master',
+      -- lazy = false;
+      config = function()
+        -- vim.cmd.colorscheme('mountain')
+      end
     },
     --[[ {
       dir = '~/dev/projects/terminator.nvim',
@@ -456,7 +491,7 @@ require('lazy').setup(
           options = {
             component_separators = '',
             section_separators = '',
-            theme = 'iceberg_dark',
+            -- theme = 'mountain',
           },
           sections = {
             lualine_a = {}, lualine_b = {}, lualine_y = {},
@@ -474,42 +509,11 @@ require('lazy').setup(
 
         ins_left {
           function() return '▊' end,
-          color = { fg = colors.blue }, -- Sets highlighting of component
-          padding = { left = 0, right = 1 }, -- We don't need space before this
+          -- color = { fg = colors.blue }, -- Sets highlighting of component
+          padding = { left = 0, right = 0 }, -- We don't need space before this
         }
 
-        ins_left {
-          function() return 'λ' end,
-          color = function()
-            local mode_color = {
-              n = colors.red,
-              i = colors.green,
-              v = colors.blue,
-              [''] = colors.blue,
-              V = colors.blue,
-              c = colors.magenta,
-              no = colors.red,
-              s = colors.orange,
-              S = colors.orange,
-              [''] = colors.orange,
-              ic = colors.yellow,
-              R = colors.violet,
-              Rv = colors.violet,
-              cv = colors.red,
-              ce = colors.red,
-              r = colors.cyan,
-              rm = colors.cyan,
-              ['r?'] = colors.cyan,
-              ['!'] = colors.red,
-              t = colors.red,
-            }
-
-            return { fg = mode_color[vim.fn.mode()] }
-          end,
-          padding = { right = 1 },
-        }
-
-        ins_left { 'progress', color = { fg = colors.fg, gui = 'bold' } }
+        -- ins_left { 'progress', color = { fg = colors.fg, gui = 'bold' } }
         ins_left { 'filename', cond = conditions.buffer_not_empty, color = { fg = colors.darkblue, gui = 'bold' } }
 
         ins_left { 'branch', icon = ' ', color = { fg = colors.violet, gui = 'bold' } }
@@ -528,29 +532,29 @@ require('lazy').setup(
 
         ins_left { function() return '%=' end }
 
-        ins_left {
-          function()
-            local msg = 'No Active Lsp'
+        -- ins_left {
+        --   function()
+        --     local msg = 'No Active Lsp'
 
-            local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
-            local clients = vim.lsp.get_active_clients()
+        --     local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
+        --     local clients = vim.lsp.get_active_clients()
 
-            if next(clients) == nil then
-              return msg
-            end
+        --     if next(clients) == nil then
+        --       return msg
+        --     end
 
-            for _, client in ipairs(clients) do
-              local filetypes = client.config.filetypes
-              if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-                return client.name
-              end
-            end
+        --     for _, client in ipairs(clients) do
+        --       local filetypes = client.config.filetypes
+        --       if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+        --         return client.name
+        --       end
+        --     end
 
-            return msg
-          end,
-          icon = '  LSP:',
-          color = { fg = '#777777', gui = 'bold' },
-        }
+        --     return msg
+        --   end,
+        --   icon = '  LSP:',
+        --   color = { fg = '#777777', gui = 'bold' },
+        -- }
 
         ins_right { 'filesize', cond = conditions.buffer_not_empty, color = { fg = '#555555' } }
         ins_right { 'location', color = { fg = '#555555' } }
@@ -580,18 +584,11 @@ require('lazy').setup(
           color = { fg = colors.green, gui = 'bold' },
         }
 
-        ins_right {
-          function()
-            return '▊'
-          end,
-          color = { fg = colors.blue },
-          padding = { left = 1 },
-        }
-
         -- Now don't forget to initialize lualine
         lualine.setup(config)
       end,
-      lazy = false;
+      lazy = false,
+      dependencies = { 'mountain-theme/vim' },
     },
     {
       'ray-x/lsp_signature.nvim',
@@ -630,6 +627,7 @@ require('lazy').setup(
     },
     {
       'L3MON4D3/luasnip',
+      tag = 'v2.2.0',
       event = 'InsertEnter'
     },
     {
@@ -714,7 +712,6 @@ require('lazy').setup(
       config = function()
         local insx = require('insx')
         local esc = require('insx.helper.regex').esc
-
         for _, quote in ipairs({ '"', "'", "`" }) do
           insx.add(quote, require('insx.recipe.jump_next')({
             jump_pat = {
@@ -808,39 +805,61 @@ require('lazy').setup(
         'Neogit'
       },
     },
-    -- {
-    --   name = 'image.nvim',
-    --   enabled = 'true',
-    --   dir = '~/sh/forks/image.nvim',
-    --   dev = true,
-    --   lazy = false,
-    --   config = function()
-    --     require("image").setup({
-    --       backend = "kitty",
-    --       integrations = {
-    --         markdown = {
-    --           enabled = true,
-    --           sizing_strategy = "auto",
-    --           download_remote_images = true,
-    --           clear_in_insert_mode = false,
-    --         },
-    --         neorg = {
-    --           enabled = true,
-    --           download_remote_images = true,
-    --           clear_in_insert_mode = false,
-    --         },
-    --       },
-    --       max_width = nil,
-    --       max_height = nil,
-    --       max_width_window_percentage = nil,
-    --       max_height_window_percentage = 50,
-    --       kitty_method = "normal",
-    --       kitty_tmux_write_delay = 10, -- makes rendering more reliable with Kitty+Tmux
-    --       window_overlap_clear_enabled = false, -- toggles images when windows are overlapped
-    --       window_overlap_clear_ft_ignore = { "cmp_menu", "cmp_docs", "" },
-    --     })
-    --   end
-    -- },
+    {
+      'stevearc/overseer.nvim',
+      config = function()
+        require('overseer').setup()
+      end,
+      opts = {},
+      cmd = {
+        'OverseerOpen',
+        'OverseerClose',
+        'OverseerToggle',
+        'OverseerSaveBundle',
+        'OverseerLoadBundle',
+        'OverseerDeleteBundle',
+        'OverseerRunCmd',
+        'OverseerRun',
+        'OverseerInfo',
+        'OverseerBuild',
+        'OverseerQuickAction',
+        'OverseerTaskAction',
+        'OverseerClearCache'
+      }
+    },
+    {
+      '3rd/image.nvim',
+      -- enabled = 'true',
+      -- dir = '~/sh/forks/image.nvim',
+      -- dev = true,
+      lazy = false,
+      config = function()
+        require("image").setup({
+          backend = "kitty",
+          integrations = {
+            markdown = {
+              enabled = true,
+              sizing_strategy = "auto",
+              download_remote_images = true,
+              clear_in_insert_mode = false,
+            },
+            neorg = {
+              enabled = true,
+              download_remote_images = true,
+              clear_in_insert_mode = false,
+            },
+          },
+          max_width = nil,
+          max_height = nil,
+          max_width_window_percentage = nil,
+          max_height_window_percentage = 50,
+          kitty_method = "normal",
+          kitty_tmux_write_delay = 10, -- makes rendering more reliable with Kitty+Tmux
+          window_overlap_clear_enabled = false, -- toggles images when windows are overlapped
+          window_overlap_clear_ft_ignore = { "cmp_menu", "cmp_docs", "" },
+        })
+      end
+    },
     {
       'tpope/vim-fugitive',
       cmd = {
@@ -889,7 +908,7 @@ require('lazy').setup(
     },
     'kyazdani42/nvim-web-devicons',
     { 'b4mbus/macro-status.nvim', dev = true }
-  },
+    },
   {
     defaults = {
       lazy = true,

@@ -34,7 +34,6 @@ local telescope_mappings = {
   h = { '<cmd>Telescope help_tags<cr>', 'Help' },
   k = { '<cmd>Telescope keymaps<cr>', 'Mappings' },
   c = { '<cmd>Telescope commands<cr>', 'Commands' },
-  C = { '<cmd>Telescope find_files search_dirs=~/.config<cr>', 'Commands' },
   H = { '<cmd>Telescope highlights<cr>', 'Highlights' },
   p = { '<cmd>Telescope projects<cr>', 'Projects' },
   b = { '<cmd>Telescope buffers<cr>', 'Buffers' },

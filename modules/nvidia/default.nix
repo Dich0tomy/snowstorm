@@ -29,7 +29,7 @@
       nvidiaSettings = true;
 
       modesetting.enable = true;
-			package = config.boot.kernelPackages.nvidiaPackages.stable;
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
     };
 
     opengl = {
@@ -38,7 +38,7 @@
       extraPackages = [
         pkgs.nvidia-vaapi-driver
         pkgs.xorg.xf86videonouveau
-				pkgs.mesa.drivers
+        pkgs.mesa.drivers
       ];
     };
   };

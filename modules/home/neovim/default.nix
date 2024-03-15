@@ -12,7 +12,7 @@
     viAlias = true;
     vimdiffAlias = true;
 
-    extraLuaPackages = p: [ p.luarocks p.magick ];
+    extraLuaPackages = p: [p.luarocks p.magick];
 
     extraPackages = [
       pkgs.gcc

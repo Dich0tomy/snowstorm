@@ -7,8 +7,8 @@
     enable = true;
 
     font = {
-      name = "Jetbrains Mono";
-      size = 11;
+      name = "Iosevka B4mbus";
+      size = 11.5;
     };
 
     extraConfig = ''

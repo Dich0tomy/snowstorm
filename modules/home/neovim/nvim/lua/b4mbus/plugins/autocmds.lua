@@ -11,13 +11,3 @@ autocmd(
     command = 'set bufhidden=delete'
   }
 )
-
-autocmd(
-  'FileType',
-  {
-    pattern = 'dap-repl',
-    callback = function()
-      require('dap.ext.autocompl').attach()
-    end
-  }
-)

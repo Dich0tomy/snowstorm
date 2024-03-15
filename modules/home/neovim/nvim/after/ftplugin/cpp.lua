@@ -1,6 +1,7 @@
 vim.b.format_on_save = true
 
-local ls = require("luasnip")
+local ok, ls = pcall(require, "luasnip")
+if not ok then return end
 
 local s = ls.snippet
 local sn = ls.snippet_node
@@ -36,5 +37,16 @@ ls.add_snippets("cpp", {
       {}
     }}
     ]=],
-    { c(1, { t(''), t('int argc. char** argv') }), i(0)  }))
+    { c(1, { t(''), t('int argc. char** argv') }), i(0) })
+  ),
+  postfix('.as', {
+    d(1, function(_, parent)
+      return sn(
+        1,
+        fmt('static_cast<{}>(' .. parent.snippet.env.POSTFIX_MATCH .. ')', {
+          i(1, 'int'),
+        })
+      )
+    end)
+  })
 })

@@ -16,11 +16,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    tokyo-night-tmux = {
-      url = "github:janoamaral/tokyo-night-tmux";
-      flake = false;
-    };
-
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
 

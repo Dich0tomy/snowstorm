@@ -3,14 +3,12 @@
   pkgs,
   config,
   ...
-}: let 
-
-vencord-discord = pkgs.discord.override {
-  nss = pkgs.nss_latest; # Open links with firefox
-  withOpenASAR = true; # Faster startup, more privacy, some mods
-  # withVencord = true; # Cool client mod
-}; 
-
+}: let
+  vencord-discord = pkgs.discord.override {
+    nss = pkgs.nss_latest; # Open links with firefox
+    withOpenASAR = true; # Faster startup, more privacy, some mods
+    withVencord = true; # Cool client mod
+  };
 in {
   nixpkgs.config.allowUnfree = true;
 
@@ -18,11 +16,15 @@ in {
     pkgs.gsettings-desktop-schemas
     pkgs.spotify
     pkgs.zip
+    pkgs.p7zip
     pkgs.unzip
     pkgs.easyeffects
     pkgs.picom
     pkgs.librewolf
-    pkgs.discord
+
+    pkgs.mullvad-browser
+
+    vencord-discord
     pkgs.pcmanfm
 
     pkgs.ytmdesktop
@@ -31,7 +33,13 @@ in {
 
     pkgs.gromit-mpx
 
+    pkgs.python313
+
+    pkgs.jq
+    pkgs.file
+    pkgs.btop
     pkgs.fd
+    pkgs.try
     pkgs.eza
     pkgs.ripgrep
     pkgs.bat
@@ -49,5 +57,7 @@ in {
     pkgs.xclip
 
     pkgs.cachix
+
+    # TODO: add various custom scripts lmao
   ];
 }

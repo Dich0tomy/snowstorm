@@ -5,7 +5,6 @@
   inputs,
   ...
 }: {
-
   nixpkgs.overlays = [
     inputs.neovim-nightly-overlay.overlay
   ];
@@ -56,7 +55,12 @@
     };
   };
 
-  # virtualisation.libvirtd.enable = true;
+  virtualisation = {
+    libvirtd.enable = true;
+    docker = {
+      enable = true;
+    };
+  };
 
   # compress half of the ram to use as swap
   zramSwap = {

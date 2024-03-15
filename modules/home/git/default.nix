@@ -3,11 +3,9 @@
   pkgs,
   ...
 }: {
-  xdg.configFile."git/allowed_signers".text =
-    ''
+  xdg.configFile."git/allowed_signers".text = ''
     danielzaradny@gmail.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMvkKM0pCOfJOuTJo8EUOWy6ckl1Gffkus3RHf1D4LSo danielzaradny@gmail.com
-    '';
-
+  '';
 
   programs.git = {
     enable = true;
@@ -27,6 +25,10 @@
 
       core = {
         editor = "nvim";
+      };
+
+      rerere = {
+        enabled = true;
       };
 
       push.default = "current";

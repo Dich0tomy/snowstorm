@@ -43,19 +43,21 @@
       enable = true;
 
       functions = {
-        gitignore = "curl -sL https://www.gitignore.io/api/$argv";
-        cd-flake = "cd $(nix flake metadata nixpkgs --json | nix run nixpkgs#jq -- -r .path)";
+        cd-flake = "cd $(nix flake metadata $argv --json | nix run nixpkgs#jq -- -r .path)";
+
+        ng = "nvim +'Neogit kind=replace'";
       };
 
       shellAbbrs = {
         m = "mkdir";
-        j = "just";
         n = "nvim";
         ls = "eza --group-directories-first -l";
-				la = "eza --group-directories-first -la";
-				nl = "nix-locate";
+        la = "eza --group-directories-first -la";
+
+        nl = "nix-locate";
 
         g = "git";
+        gc = "git commit -m";
         gs = "git status";
         gl = "git l -10";
         gl2 = "git l -20";

@@ -20,29 +20,6 @@ if not lsp_ok then
   return
 end
 
-require('lspconfig.configs').fennel_language_server = ({
-  default_config = {
-    -- replace it with true path
-    cmd = { '/home/b4mbus/.cargo/bin/fennel-language-server' },
-    filetypes = { 'fennel' },
-    single_file_support = true,
-    -- source code resides in directory `fnl/`
-    root_dir = lsp.util.root_pattern("fnl"),
-    settings = {
-      fennel = {
-        workspace = {
-          -- If you are using hotpot.nvim or aniseed,
-          -- make the server aware of neovim runtime files.
-          library = vim.api.nvim_list_runtime_paths(),
-        },
-        diagnostics = {
-          globals = { 'vim' },
-        },
-      },
-    },
-  },
-})
-
 local custom_on_attach =  function(client, bufnr)
   local wk_ok, wk = b4.pequire('which-key')
   if wk_ok then
@@ -65,7 +42,7 @@ local custom_on_attach =  function(client, bufnr)
       R = { '<cmd>Telescope lsp_references<cr>', 'References' },
       d = { '<cmd>Telescope lsp_definitions<cr>', 'Definitions' },
       D = { '<cmd>lua vim.diagnostic.open_float()<cr>', 'Diagnostics float' },
-      i = { '<cmd>lua vim.lsp.inlay_hint(0, nil)<cr>', 'Toggle inlay hint for buffer' },
+      i = { '<cmd>lua vim.lsp.inlay_hint.enable(vim.fn.bufnr(), not vim.lsp.inlay_hint.is_enabled(vim.fn.bufnr()))<cr>', 'Toggle inlay hint for buffer' },
       s = { '<cmd>Telescope lsp_document_symbols<cr>', 'Local symbols' },
       S = { '<cmd>Telescope lsp_dynamic_workspace_symbols<cr>', 'Symbols' },
       l = { '<cmd>lua require "lsp_lines".toggle()<cr>', 'Toggle lsp_lines' },
@@ -154,25 +131,27 @@ local clangd_config = {
   end
 }
 
+local clangd_command = {
+  (os.getenv('CLANGD_PATH') or 'clangd'),
+  '--background-index',
+  '--clang-tidy',
+  '--completion-style=detailed',
+  '--header-insertion=iwyu',
+  '--header-insertion-decorators',
+  '--all-scopes-completion',
+  '--enable-config',
+  '--pch-storage=disk',
+}
+
+local gcc_path = os.getenv('GCC_PATH')
+if gcc_path and string.len(gcc_path) > 0 then
+  table.insert(clangd_command, ('--query-driver=%s'):format(gcc_path));
+end
+
 lsp.clangd.setup(
   vim.tbl_extend('keep', clangd_config, {
-    cmd = {
-      os.getenv('CLANGD_PATH') or 'clangd',
-      '--background-index',
-      '--clang-tidy',
-      '--completion-style=detailed',
-      '--header-insertion=never',
-      '--header-insertion-decorators',
-      '--all-scopes-completion',
-
-      -- '--compile-commands-dir=${workspaceFolder}/build',
-
-      '--enable-config',
-      '--pch-storage=disk',
-
-      '--log=info',
-    }
-  })
+    cmd = clangd_command,
+ })
 )
 
 local sumneko_lua_settings = {
@@ -203,11 +182,11 @@ lsp.lua_ls.setup(
 lsp.hls.setup(default_config)
 lsp.tsserver.setup(default_config)
 lsp.rust_analyzer.setup(default_config)
-lsp.fennel_language_server.setup(default_config)
 lsp.kotlin_language_server.setup(default_config)
+lsp.neocmake.setup(default_config)
 
--- lsp.sorbet.setup(default_config)
--- lsp.ruby_ls.setup(default_config)
+lsp.ruff_lsp.setup(default_config)
+lsp.pyright.setup(default_config)
 
 vim.diagnostic.config {
   update_in_insert = false,

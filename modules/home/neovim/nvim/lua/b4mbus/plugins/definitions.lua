@@ -248,6 +248,7 @@ require('lazy').setup(
                 spec = "~/Znanie/Spec",
                 books = "~/Znanie/Books",
                 strategy = "~/Znanie/Strategy",
+                bavara = "~/Znanie/Bavara",
               },
             },
           },
@@ -322,27 +323,27 @@ require('lazy').setup(
     'ggandor/leap.nvim',
     'ggandor/flit.nvim',
     'folke/todo-comments.nvim',
-    {
-      'NvChad/nvim-colorizer.lua',
-      event = 'ColorsCheme',
-      config = function()
-        require('colorizer').setup({
-          user_default_options = {
-            RGB = false, -- #RGB hex codes
-            RRGGBB = false, -- #RRGGBB hex codes
-            names = false, -- "Name" codes like Blue or blue
-            RRGGBBAA = false, -- #RRGGBBAA hex codes
-            AARRGGBB = false, -- 0xAARRGGBB hex codes
-            rgb_fn = false, -- CSS rgb() and rgba() functions
-            hsl_fn = false, -- CSS hsl() and hsla() functions
-            css = false, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
-            css_fn = false, -- Enable all CSS *functions*: rgb_fn, hsl_fn
-            mode = "background", -- Set the display mode.
-            virtualtext = "■",
-          },
-        })
-      end
-    },
+    -- {
+    --   'NvChad/nvim-colorizer.lua',
+    --   event = 'ColorsCheme',
+    --   config = function()
+    --     require('colorizer').setup({
+    --       user_default_options = {
+    --         RGB = false, -- #RGB hex codes
+    --         RRGGBB = false, -- #RRGGBB hex codes
+    --         names = false, -- "Name" codes like Blue or blue
+    --         RRGGBBAA = false, -- #RRGGBBAA hex codes
+    --         AARRGGBB = false, -- 0xAARRGGBB hex codes
+    --         rgb_fn = false, -- CSS rgb() and rgba() functions
+    --         hsl_fn = false, -- CSS hsl() and hsla() functions
+    --         css = false, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+    --         css_fn = false, -- Enable all CSS *functions*: rgb_fn, hsl_fn
+    --         mode = "background", -- Set the display mode.
+    --         virtualtext = "■",
+    --       },
+    --     })
+    --   end
+    -- },
     {
       "jackMort/pommodoro-clock.nvim",
       config = function()
@@ -449,6 +450,11 @@ require('lazy').setup(
       'numToStr/Comment.nvim',
       keys = { 'gc', 'gcc', 'gbc' },
       dependencies = { 'JoosepAlviste/nvim-ts-context-commentstring' },
+    },
+    {
+      'Wansmer/symbol-usage.nvim',
+      event = 'LspAttach', -- need run before LspAttach if you use nvim 0.9. On 0.10 use 'LspAttach'
+      config = true;
     },
     {
       'nvim-lualine/lualine.nvim',
@@ -654,17 +660,10 @@ require('lazy').setup(
             ['`'] = 'actions.cd',
             ['~'] = 'actions.tcd',
             ['g.'] = 'actions.toggle_hidden',
-            ['q'] = 'actions.close',
           },
         })
 
-        vim.keymap.set(
-          'n',
-          '-',
-          oil.open,
-          { desc = 'Open parent directory' }
-        )
-
+        vim.keymap.set('n', '-', oil.open, { desc = 'Open parent directory' })
         vim.keymap.set('n', '+', oil.open_float, { desc = 'Open parent directory float' })
       end
     },
@@ -757,19 +756,6 @@ require('lazy').setup(
             close = close
           }))
         end
-      end
-    },
-    'mfussenegger/nvim-dap',
-    {
-      'theHamsta/nvim-dap-virtual-text',
-      setup = function()
-        require("nvim-dap-virtual-text").setup()
-      end
-    },
-    {
-      'rcarriga/nvim-dap-ui',
-      setup = function()
-        require("dapui").setup()
       end
     },
     'rafamadriz/friendly-snippets',

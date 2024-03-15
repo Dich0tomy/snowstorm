@@ -273,8 +273,7 @@
         "lyrap-cursors": "lyrap-cursors",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nix-index-db": "nix-index-db",
-        "nixpkgs": "nixpkgs_3",
-        "tokyo-night-tmux": "tokyo-night-tmux"
+        "nixpkgs": "nixpkgs_3"
       }
     },
     "systems": {
@@ -289,22 +288,6 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
-        "type": "github"
-      }
-    },
-    "tokyo-night-tmux": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1703122538,
-        "narHash": "sha256-zGlaPEeRQqd7g9HA9pvf8wSTeXwD4Qh5JzD3nzZkKAQ=",
-        "owner": "janoamaral",
-        "repo": "tokyo-night-tmux",
-        "rev": "eb759e91085be3446778751341cbd3248705c608",
-        "type": "github"
-      },
-      "original": {
-        "owner": "janoamaral",
-        "repo": "tokyo-night-tmux",
         "type": "github"
       }
     }

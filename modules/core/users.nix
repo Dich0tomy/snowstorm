@@ -11,6 +11,7 @@
     shell = pkgs.fish;
 
     extraGroups = [
+      "docker"
       "wheel"
       "systemd-journal"
       "audio"

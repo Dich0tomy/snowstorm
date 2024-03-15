@@ -18,13 +18,13 @@ in {
 
       pkgs.maple-mono-NF
       pkgs.roboto
-			pkgs.profont
-			pkgs.spleen
-			pkgs.jetbrains-mono
+      pkgs.profont
+      pkgs.spleen
+      pkgs.jetbrains-mono
 
-			# basic set of fonts
-			pkgs.noto-fonts
-			pkgs.corefonts
+      # basic set of fonts
+      pkgs.noto-fonts
+      pkgs.corefonts
     ];
   };
 }

@@ -28,20 +28,19 @@
           rev = "master";
           sha256 = "sha256-KJNsdDLqT2Uzc25U4GLSB2O1SA/PThmDj9Aej5XjmJs=";
         };
-
       };
 
-        minimal-status-bar = tmuxPlugins.mkTmuxPlugin {
-        	pluginName = "minimal-tmux-status";
-					rtpFilePath = "minimal.tmux";
-					version = "0.1.0";
-					src = fetchFromGitHub {
-						owner = "niksingh710";
-						repo = "minimal-tmux-status";
-						rev = "master";
-						sha256 = "sha256-v2Sxu/zNwgLVlbTe4KZOpHhV5Tlanxe6CpmAQ0CnHkU=";
-					};
+      minimal-status-bar = tmuxPlugins.mkTmuxPlugin {
+        pluginName = "minimal-tmux-status";
+        rtpFilePath = "minimal.tmux";
+        version = "0.1.0";
+        src = fetchFromGitHub {
+          owner = "niksingh710";
+          repo = "minimal-tmux-status";
+          rev = "master";
+          sha256 = "sha256-v2Sxu/zNwgLVlbTe4KZOpHhV5Tlanxe6CpmAQ0CnHkU=";
         };
+      };
     in [
       cowboy
       minimal-status-bar

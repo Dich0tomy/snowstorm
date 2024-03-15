@@ -9,8 +9,7 @@
     ./nix.nix
     ./users.nix
     ./openssh.nix
-    ./blocker.nix
+    ./networking.nix
     ./fonts.nix
-    ./filesystem.nix
   ];
 }

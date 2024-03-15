@@ -21,8 +21,7 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 local bandit = require('bandit')
 bandit.set_ss_dir( os.getenv('HOME') .. '/Pictures/Screenshots/' )
 
-
-local layouts = { --[[ 'pl colemak_dh',  ]] 'pl', 'ru' }
+local layouts = { 'pl', 'us norman', 'ru' }
 local Polyglot = require('polyglot'):new(layouts)
 
 -- Enable hotkeys help widget for VIM and other apps

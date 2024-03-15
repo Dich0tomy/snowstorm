@@ -251,9 +251,9 @@ command( -- Lua Exec
   'LE',
   function(args)
     local escape = vim.fn.escape
-    api.nvim_exec(
+    api.nvim_exec2(
       [[pu=execute('lua local p,f=print,string.format;p(]] .. escape(args.args, [["']]) ..  [[)')]],
-      false
+      { output = false }
     )
   end,
   { nargs = '*' }
@@ -264,21 +264,40 @@ command(
   function(args)
     local split, trim = vim.fn.split, vim.fn.trim
 
-    local history = split(api.nvim_exec('history : -5,', true), "\n")
-    table.remove(history, 1)
+    local last_5_history_entries = split(api.nvim_exec2('history : -5,', { output = true }).output, '\n')
+    table.remove(last_5_history_entries, 1)
 
-    for _, cmd in ipairs(history) do
-      local pat = [[.*s/(.-[^\])/]]
+    for _, cmd in ipairs(last_5_history_entries) do
       cmd = trim(cmd):gmatch("%d+ (.*)")()
 
-      if cmd:gmatch(pat)() ~= '' then
-        local col_b = api.nvim_buf_get_mark(0, '<')
-        local col_e = api.nvim_buf_get_mark(0, '>')
+      local substitution_pat = [[.-s/(.-[^\])/(.-[^\])/(.*)]]
+      local prev_sub_from, prev_sub_to, prev_sub_flags = cmd:gmatch(substitution_pat)()
 
-        api.nvim_exec('undo', false)
-        api.nvim_exec(('%s,%ss/%s/%s'):format(col_b, col_e, cmd, args.args), false)
+      if prev_sub_from and prev_sub_to and prev_sub_to ~= '' then
+        local beginning_row = api.nvim_buf_get_mark(0, '<')[1]
+        local ending_row = api.nvim_buf_get_mark(0, '>')[1]
+
+        -- still to do lol
+        local prev_substitution = vim.fn.substitute(prev_sub_from, prev_sub_to, "", prev_sub_flags)
+
+        -- b4.P(
+        --   ('%s, %ss/%s/%s'):format(beginning_row, ending_row, substitution, args.args),
+        --   substitution,
+        --   beginning_row,
+        --   ending_row
+        -- )
+
+        -- api.nvim_exec2('undo', { output = false })
+        -- api.nvim_exec2(
+        --   (('%s, %ss/%s/%s'):format(beginning_row, ending_row, cmd, args.args)),
+        --   { output = false }
+        -- )
+        break
       end
     end
   end,
   { nargs = '*' }
 )
+
+-- foooooooo()
+-- foooooooo()

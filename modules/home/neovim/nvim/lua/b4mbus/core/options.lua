@@ -16,7 +16,7 @@ vim.opt.incsearch = true
 vim.opt.termguicolors = true
 vim.opt.autoread = true
 vim.opt.confirm = true
-vim.opt.ignorecase = true
+vim.opt.smartcase = true
 vim.opt.showtabline = 1
 vim.opt.shiftwidth = 2
 vim.opt.pumheight = 10
@@ -29,7 +29,6 @@ vim.opt.history = 10000
 
 vim.cmd('set colorcolumn=120')
 
-vim.opt.signcolumn = 'yes'
 vim.opt.grepprg = 'rg -n $* /dev/null'
 
 vim.opt.foldcolumn = '1'

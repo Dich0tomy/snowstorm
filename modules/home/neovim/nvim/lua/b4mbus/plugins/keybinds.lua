@@ -88,28 +88,3 @@ keymap(
 local dbg_map = function(suffix, thing)
   keymap('n', '<leader>d' .. suffix, thing)
 end
-
-dbg_map('c', function() require 'dap'.continue() end)
-dbg_map('o', function() require 'dap'.step_over() end)
-dbg_map('i', function() require 'dap'.step_into() end)
-dbg_map('l', function() require 'dap'.step_out() end)
-dbg_map(
-  'L',
-  function()
-    local dap = require 'dap'
-    dap.step_into()
-    dap.step_out()
-  end
-)
-
--- keymap('n', '<F5>', function() require'dap'.continue() end)
--- keymap('n', '<F6>', function() require'dap'.step_over() end)
--- keymap('n', '<F7>', function() require'dap'.step_into() end)
--- keymap('n', '<F8>', function() require'dap'.step_out() end)
-
-dbg_map('b', function() require 'dap'.toggle_breakpoint() end)
-dbg_map('B', function() require 'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: ')) end)
-dbg_map('p', function() require 'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end)
-
-dbg_map('r', function() require 'dap'.repl.open() end)
-dbg_map('t', function() require 'dapui'.close() end)

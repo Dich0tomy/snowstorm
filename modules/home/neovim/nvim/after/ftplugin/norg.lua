@@ -9,4 +9,4 @@ vim.opt_local.listchars = {
 vim.opt.conceallevel = 3
 vim.o.concealcursor = ''
 
-vim.opt.spell = true
+vim.wo.spell = true

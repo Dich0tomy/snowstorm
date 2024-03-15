@@ -10,3 +10,5 @@ vim.g.markdown_fenced_languages = {
 vim.g.markdown_recommended_style = 0
 
 vim.g.mapleader = ' '
+
+vim.g.editorconfig = true
